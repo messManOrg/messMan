@@ -29,10 +29,9 @@ const BottomNavBar: React.FC = () => {
       >
          <BottomNavigation value={value} onChange={handleNavChange}>
             {navs.map(navItem => (
-               ///@ts-ignore
                <BottomNavigationAction
                   key={navItem.value}
-                  LinkComponent={Link}
+                  component={Link}
                   to={navItem.value}
                   value={navItem.value}
                   icon={navItem.icon}
