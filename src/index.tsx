@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import ReactDOM from 'react-dom';
-import { CssBaseline } from '@mui/material';
+import {
+   createTheme,
+   CssBaseline,
+   ThemeProvider,
+   useMediaQuery,
+} from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
@@ -8,16 +13,32 @@ import reportWebVitals from './reportWebVitals';
 import AuthProvider from './store/context/auth/AuthProvider';
 import StoreProvider from './store/context/root/StoreProvider';
 
-const Root = () => (
-   <BrowserRouter>
-      <AuthProvider>
-         <StoreProvider>
-            <CssBaseline />
-            <App />
-         </StoreProvider>
-      </AuthProvider>
-   </BrowserRouter>
-);
+const Root = () => {
+   const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+   const theme = useMemo(
+      () =>
+         createTheme({
+            palette: {
+               mode: isDarkMode ? 'dark' : 'light',
+            },
+         }),
+      [isDarkMode]
+   );
+
+   return (
+      <ThemeProvider theme={theme}>
+         <AuthProvider>
+            <BrowserRouter>
+               <StoreProvider>
+                  <CssBaseline />
+                  <App />
+               </StoreProvider>
+            </BrowserRouter>
+         </AuthProvider>
+      </ThemeProvider>
+   );
+};
 
 ReactDOM.render(
    <React.StrictMode>
@@ -25,10 +46,6 @@ ReactDOM.render(
    </React.StrictMode>,
    document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://cra.link/PWA
 
 if (process.env.NODE_ENV === 'production') {
    serviceWorkerRegistration.register();
