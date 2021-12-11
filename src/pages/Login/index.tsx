@@ -1,7 +1,7 @@
 import { Button, Typography, Card, Box, TextField } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../store/context/auth/AuthProvider';
-import { CardContainer, SocialContainer } from './styles';
+import { CardContainer } from './styles';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
@@ -21,7 +21,7 @@ const Login: React.FC = () => {
    return (
       <>
          <CardContainer>
-            <Card sx={{ minWidth: 475 , p: '2rem' }}>
+            <Card sx={{ maxWidth: 700, py: '3rem', px: '1.5rem', m: '1rem' }}>
                <Typography
                   variant='h4'
                   gutterBottom
@@ -32,34 +32,52 @@ const Login: React.FC = () => {
                <Box sx={{ my: '1.5rem' }}>
                   <TextField
                      sx={{ width: '100%' }}
-                     id='standard-basic'
-                     label='Your Email'
-                     variant='standard'
+                     label='Email'
+                     variant='outlined'
+                     type='email'
                   />
                </Box>
                <Box sx={{ mb: '2rem' }}>
                   <TextField
                      sx={{ width: '100%' }}
-                     id='standard-basic'
-                     label='Your Password'
-                     variant='standard'
+                     label='Password'
+                     variant='outlined'
+                     type='password'
                   />
                </Box>
-
+               <Typography sx={{ my: '10px' }}>
+                  Don't have a Account?{' '}
+                  <Link style={{ textDecoration: 'none' }} to='/register'>
+                     Register here
+                  </Link>
+               </Typography>
                <Button
                   onClick={handleLogin}
                   variant='contained'
                   sx={{ width: '100%' }}
+                  color='info'
                >
                   Login
                </Button>
-               <Typography sx={{my:'10px'}}>
-                  or login with 
-               </Typography>
-               <SocialContainer>
-                  <GoogleIcon sx={{fontSize:'3em',mx:'1rem'}}/>
-                  <FacebookIcon sx={{fontSize:'3em',mx:'1rem'}}/>
-               </SocialContainer>
+               <Typography sx={{ my: '10px' }}>or login with</Typography>
+               <Button
+                  onClick={handleLogin}
+                  variant='contained'
+                  sx={{ width: '100%' }}
+                  color='warning'
+               >
+                  <GoogleIcon sx={{ mx: '1rem' }} />
+                  Login With Google
+               </Button>
+               <Button
+                  onClick={handleLogin}
+                  variant='contained'
+                  sx={{ width: '100%', mt: '0.5rem' }}
+                  
+               >
+                  <FacebookIcon sx={{ mx: '1rem' }} />
+                  Login With Facebook
+               </Button>
             </Card>
          </CardContainer>
       </>

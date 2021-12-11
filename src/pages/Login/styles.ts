@@ -8,10 +8,6 @@ const CardContainer = styled(Box)({
    height: '100vh',
    width: '100vw',
 });
-const SocialContainer = styled(Box)({
-   display: 'flex',
-   alignItems: 'center',
-   justifyContent: 'center',
-});
 
-export { CardContainer,SocialContainer };
+
+export { CardContainer }; 
