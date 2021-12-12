@@ -20,65 +20,83 @@ const Login: React.FC = () => {
 
    return (
       <CardContainer>
-      <Card sx={{ maxWidth: 700, py: '3rem', px: '1.5rem', m: '1rem' }}>
-         <Typography
-            variant='h4'
-            gutterBottom
-            sx={{ textAlign: 'center' }}
+         <Card
+            sx={{
+               width: { sm: '100%', md: '50%' },
+               py: '3rem',
+               px: '1.5rem',
+               m: '1rem',
+            }}
          >
-            Login
-         </Typography>
-         <Box sx={{ my: '1.5rem' }}>
-            <TextField
+            <Typography variant='h4' gutterBottom sx={{ textAlign: 'center' }}>
+               Login
+            </Typography>
+            <Box sx={{ my: '1.5rem' }}>
+               <TextField
+                  sx={{ width: '100%' }}
+                  label='Email'
+                  variant='outlined'
+                  type='email'
+               />
+            </Box>
+            <Box sx={{ mb: '2rem' }}>
+               <TextField
+                  sx={{ width: '100%' }}
+                  label='Password'
+                  variant='outlined'
+                  type='password'
+               />
+            </Box>
+
+            <Box
+               sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  my: '10px',
+               }}
+            >
+               <Typography sx={{ my: '10px' }}>
+                  Don't have an Account?{' '}
+                  <Link style={{ textDecoration: 'none' }} to='/register'>
+                     Register here
+                  </Link>
+               </Typography>
+               <Typography sx={{ my: '10px' }}>
+                  {' '}
+                  <Link style={{ textDecoration: 'none' }} to='/forgetPassword'>
+                     Forget Password?
+                  </Link>
+               </Typography>
+            </Box>
+            <Button
+               onClick={handleLogin}
+               variant='contained'
                sx={{ width: '100%' }}
-               label='Email'
-               variant='outlined'
-               type='email'
-            />
-         </Box>
-         <Box sx={{ mb: '2rem' }}>
-            <TextField
+               color='info'
+            >
+               Login
+            </Button>
+
+            <Typography sx={{ my: '10px' }}>or login with</Typography>
+            <Button
+               onClick={handleLogin}
+               variant='contained'
                sx={{ width: '100%' }}
-               label='Password'
-               variant='outlined'
-               type='password'
-            />
-         </Box>
-         <Typography sx={{ my: '10px' }}>
-            Don't have a Account?{' '}
-            <Link style={{ textDecoration: 'none' }} to='/register'>
-               Register here
-            </Link>
-         </Typography>
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            sx={{ width: '100%' }}
-            color='info'
-         >
-            Login
-         </Button>
-         <Typography sx={{ my: '10px' }}>or login with</Typography>
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            sx={{ width: '100%' }}
-            color='warning'
-         >
-            <GoogleIcon sx={{ mx: '1rem' }} />
-            Login With Google
-         </Button>
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            sx={{ width: '100%', mt: '0.5rem' }}
-            
-         >
-            <FacebookIcon sx={{ mx: '1rem' }} />
-            Login With Facebook
-         </Button>
-      </Card>
-   </CardContainer>
+               color='warning'
+            >
+               <GoogleIcon sx={{ mx: '1rem' }} />
+               Login With Google
+            </Button>
+            <Button
+               onClick={handleLogin}
+               variant='contained'
+               sx={{ width: '100%', mt: '0.5rem' }}
+            >
+               <FacebookIcon sx={{ mx: '1rem' }} />
+               Login With Facebook
+            </Button>
+         </Card>
+      </CardContainer>
    );
 };
 
