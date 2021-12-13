@@ -1,5 +1,5 @@
 import { Card, Container } from '@mui/material';
-import { CardContainer } from '../Styles/style';
+import { CardContainer } from './style';
 
 const AuthLayout: React.FC = ({ children }) => {
    return (
