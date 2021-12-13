@@ -1,9 +1,12 @@
 import { Button, Typography, Box, TextField } from '@mui/material';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../store/context/auth/AuthProvider';
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import AuthLayout from '../../components/AuthLayout';
+import { RoutePaths } from '../../enums/routes';
+import {
+   FBLoginButton,
+   GoogleLoginButton,
+} from '../../components/LoginButtons';
 
 const Login: React.FC = () => {
    let navigate = useNavigate();
@@ -20,42 +23,42 @@ const Login: React.FC = () => {
 
    return (
       <AuthLayout>
-         <Typography variant='h4' gutterBottom sx={{ textAlign: 'center' }}>
+         <Typography variant='h4' gutterBottom align='center'>
             Login
          </Typography>
-         <Box sx={{ my: '1.5rem' }}>
+         <Box marginY={1.5}>
             <TextField
-               sx={{ width: '100%' }}
+               fullWidth
                label='Email'
                variant='outlined'
                type='email'
             />
          </Box>
-         <Box sx={{ mb: '2rem' }}>
+         <Box marginY={1.5}>
             <TextField
-               sx={{ width: '100%' }}
+               fullWidth
                label='Password'
                variant='outlined'
                type='password'
             />
          </Box>
 
-         <Box
-            sx={{
-               display: 'flex',
-               justifyContent: 'space-between',
-               my: '10px',
-            }}
-         >
-            <Typography sx={{ my: '10px' }}>
+         <Box display='flex' justifyContent='space-between' marginY={1}>
+            <Typography marginY={1}>
                Don't have an Account?{' '}
-               <Link style={{ textDecoration: 'none' }} to='/register'>
+               <Link
+                  style={{ textDecoration: 'none' }}
+                  to={RoutePaths.Register}
+               >
                   Register here
                </Link>
             </Typography>
-            <Typography sx={{ my: '10px' }}>
+            <Typography marginY={1}>
                {' '}
-               <Link style={{ textDecoration: 'none' }} to='/forgetPassword'>
+               <Link
+                  style={{ textDecoration: 'none' }}
+                  to={RoutePaths.ForgetPassword}
+               >
                   Forget Password?
                </Link>
             </Typography>
@@ -63,30 +66,18 @@ const Login: React.FC = () => {
          <Button
             onClick={handleLogin}
             variant='contained'
-            sx={{ width: '100%' }}
+            fullWidth
             color='info'
          >
             Login
          </Button>
 
-         <Typography sx={{ my: '10px' }}>or login with</Typography>
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            sx={{ width: '100%' }}
-            color='warning'
-         >
-            <GoogleIcon sx={{ mx: '1rem' }} />
-            Login With Google
-         </Button>
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            sx={{ width: '100%', mt: '0.5rem' }}
-         >
-            <FacebookIcon sx={{ mx: '1rem' }} />
-            Login With Facebook
-         </Button>
+         <Typography align='center' marginY={1}>
+            or
+         </Typography>
+
+         <GoogleLoginButton handleLogin={handleLogin} />
+         <FBLoginButton handleLogin={handleLogin} />
       </AuthLayout>
    );
 };

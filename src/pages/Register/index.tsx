@@ -1,9 +1,12 @@
 import { Button, Typography, Box, TextField } from '@mui/material';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../store/context/auth/AuthProvider';
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import AuthLayout from '../../components/AuthLayout';
+import { RoutePaths } from '../../enums/routes';
+import {
+   FBLoginButton,
+   GoogleLoginButton,
+} from '../../components/LoginButtons';
 
 const Register: React.FC = () => {
    let navigate = useNavigate();
@@ -20,73 +23,58 @@ const Register: React.FC = () => {
 
    return (
       <AuthLayout>
-         <Typography variant='h4' gutterBottom sx={{ textAlign: 'center' }}>
+         <Typography variant='h4' gutterBottom align='center'>
             Register
          </Typography>
-         <Box sx={{ my: '1.5rem' }}>
-            <TextField
-               sx={{ width: '100%' }}
-               label='Name'
-               variant='outlined'
-               type='text'
-            />
+         <Box marginY={1.5}>
+            <TextField fullWidth label='Name' variant='outlined' type='text' />
          </Box>
-         <Box sx={{ my: '1.5rem' }}>
+         <Box marginY={1.5}>
             <TextField
-               sx={{ width: '100%' }}
+               fullWidth
                label='Email'
                variant='outlined'
                type='email'
             />
          </Box>
-         <Box sx={{ my: '1.5rem' }}>
+         <Box marginY={1.5}>
             <TextField
-               sx={{ width: '100%' }}
+               fullWidth
                label='Password'
                variant='outlined'
                type='password'
             />
          </Box>
-         <Box sx={{ mb: '2rem' }}>
+         <Box marginY={1.5}>
             <TextField
-               sx={{ width: '100%' }}
+               fullWidth
                label='Retype Password'
                variant='outlined'
                type='password'
             />
          </Box>
-         <Typography sx={{ my: '10px' }}>
+
+         <Typography marginY={1}>
             Already have an Account?{' '}
-            <Link style={{ textDecoration: 'none' }} to='/login'>
+            <Link style={{ textDecoration: 'none' }} to={RoutePaths.Login}>
                Login here
             </Link>
          </Typography>
          <Button
             onClick={handleLogin}
             variant='contained'
-            sx={{ width: '100%' }}
+            fullWidth
             color='info'
          >
             Register
          </Button>
-         <Typography sx={{ my: '10px' }}>or login with</Typography>
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            sx={{ width: '100%' }}
-            color='warning'
-         >
-            <GoogleIcon sx={{ mx: '1rem' }} />
-            Login With Google
-         </Button>
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            sx={{ width: '100%', mt: '0.5rem' }}
-         >
-            <FacebookIcon sx={{ mx: '1rem' }} />
-            Login With Facebook
-         </Button>
+
+         <Typography align='center' marginX={1}>
+            or
+         </Typography>
+
+         <GoogleLoginButton handleLogin={handleLogin} />
+         <FBLoginButton handleLogin={handleLogin} />
       </AuthLayout>
    );
 };
