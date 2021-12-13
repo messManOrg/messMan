@@ -5,6 +5,8 @@ import Meals from './pages/Meals';
 import Notices from './pages/Notices';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import { ForgetPassword } from './pages/ForgetPassword';
 
 function App() {
    return (
@@ -15,6 +17,8 @@ function App() {
          <Route path='notices' element={<Notices />} />
          <Route path='profile' element={<Profile />} />
          <Route path='login' element={<Login />} />
+         <Route path='register' element={<Register />} />
+         <Route path='forget-password' element={<ForgetPassword />} />
       </Routes>
    );
 }

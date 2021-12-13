@@ -8,7 +8,7 @@ import {
    GoogleLoginButton,
 } from '../../components/LoginButtons';
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
    let navigate = useNavigate();
    let location = useLocation();
    let auth = useAuth();
@@ -24,8 +24,11 @@ const Login: React.FC = () => {
    return (
       <AuthLayout>
          <Typography variant='h4' gutterBottom align='center'>
-            Login
+            Register
          </Typography>
+         <Box marginY={1.5}>
+            <TextField fullWidth label='Name' variant='outlined' type='text' />
+         </Box>
          <Box marginY={1.5}>
             <TextField
                fullWidth
@@ -42,37 +45,31 @@ const Login: React.FC = () => {
                type='password'
             />
          </Box>
-
-         <Box display='flex' justifyContent='space-between' marginY={1}>
-            <Typography marginY={1}>
-               Don't have an Account?{' '}
-               <Link
-                  style={{ textDecoration: 'none' }}
-                  to={RoutePaths.Register}
-               >
-                  Register here
-               </Link>
-            </Typography>
-            <Typography marginY={1}>
-               {' '}
-               <Link
-                  style={{ textDecoration: 'none' }}
-                  to={RoutePaths.ForgetPassword}
-               >
-                  Forget Password?
-               </Link>
-            </Typography>
+         <Box marginY={1.5}>
+            <TextField
+               fullWidth
+               label='Retype Password'
+               variant='outlined'
+               type='password'
+            />
          </Box>
+
+         <Typography marginY={1}>
+            Already have an Account?{' '}
+            <Link style={{ textDecoration: 'none' }} to={RoutePaths.Login}>
+               Login here
+            </Link>
+         </Typography>
          <Button
             onClick={handleLogin}
             variant='contained'
             fullWidth
             color='info'
          >
-            Login
+            Register
          </Button>
 
-         <Typography align='center' marginY={1}>
+         <Typography align='center' marginX={1}>
             or
          </Typography>
 
@@ -82,4 +79,4 @@ const Login: React.FC = () => {
    );
 };
 
-export default Login;
+export default Register;

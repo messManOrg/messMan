@@ -5,4 +5,6 @@ export enum RoutePaths {
    Notices = '/notices',
    Profile = '/profile',
    Login = '/login',
+   Register = '/register',
+   ForgetPassword = '/forget-password'
 }
