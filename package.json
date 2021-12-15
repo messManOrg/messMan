@@ -7,7 +7,7 @@
       "build": "react-scripts build",
       "test": "react-scripts test",
       "eject": "react-scripts eject",
-      "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+      "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,html,yaml}\""
    },
    "dependencies": {
       "@emotion/react": "^11.7.0",
@@ -40,6 +40,7 @@
       "@types/node": "^16.11.11",
       "@types/react": "^17.0.37",
       "@types/react-dom": "^17.0.11",
+      "prettier": "^2.5.1",
       "typescript": "^4.5.2"
    },
    "eslintConfig": {
@@ -52,7 +53,8 @@
       "tabWidth": 3,
       "singleQuote": true,
       "jsxSingleQuote": true,
-      "arrowParens": "avoid"
+      "arrowParens": "avoid",
+      "endOfLine": "lf"
    },
    "browserslist": {
       "production": [

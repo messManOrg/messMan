@@ -9,5 +9,4 @@ const CardContainer = styled(Box)({
    width: '100vw',
 });
 
-
-export { CardContainer }; 
+export { CardContainer };
