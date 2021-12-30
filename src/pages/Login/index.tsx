@@ -1,6 +1,6 @@
 import { Button, Typography, Box, TextField } from '@mui/material';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../store/context/auth/AuthProvider';
+import { useAuth } from '../../store/auth/Provider';
 import AuthLayout from '../../components/AuthLayout';
 import { RoutePaths } from '../../enums/routes';
 import {
