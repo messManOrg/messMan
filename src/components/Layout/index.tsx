@@ -8,7 +8,9 @@ const Layout: React.FC = ({ children }) => {
       <>
          <AppBar />
          <RequireAuth>
-            <Container maxWidth='sm'>{children}</Container>
+            <Container sx={{ py: 2 }} maxWidth='sm'>
+               {children}
+            </Container>
          </RequireAuth>
          <BottomNavBar />
       </>
