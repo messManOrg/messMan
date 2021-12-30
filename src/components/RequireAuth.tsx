@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { RoutePaths } from '../enums/routes';
-import { useAuth } from '../store/context/auth/AuthProvider';
+import { useAuth } from '../store/auth/Provider';
 
 const RequireAuth: React.FC<{ children: JSX.Element }> = ({ children }) => {
    let auth = useAuth();

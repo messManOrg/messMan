@@ -10,8 +10,8 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import AuthProvider from './store/context/auth/AuthProvider';
-import StoreProvider from './store/context/root/StoreProvider';
+import AuthProvider from './store/auth/Provider';
+import MealStoreProvider from './store/meal/Provider';
 
 const Root = () => {
    const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -30,10 +30,10 @@ const Root = () => {
       <ThemeProvider theme={theme}>
          <AuthProvider>
             <BrowserRouter>
-               <StoreProvider>
+               <MealStoreProvider>
                   <CssBaseline />
                   <App />
-               </StoreProvider>
+               </MealStoreProvider>
             </BrowserRouter>
          </AuthProvider>
       </ThemeProvider>

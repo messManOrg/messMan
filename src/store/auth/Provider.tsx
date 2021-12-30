@@ -7,11 +7,9 @@ interface AuthContextType {
    signout: (callback: VoidFunction) => void;
 }
 
-let AuthContext = createContext<AuthContextType>(null!);
+const AuthContext = createContext<AuthContextType>(null!);
 
-export function useAuth() {
-   return useContext(AuthContext);
-}
+export const useAuth = () => useContext(AuthContext);
 
 const AuthProvider: React.FC = ({ children }) => {
    let [user, setUser] = useState<any>(null);
