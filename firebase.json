@@ -1,0 +1,28 @@
+{
+   "hosting": {
+      "site": "messman",
+      "public": "build"
+   },
+   "firestore": {
+      "rules": "firestore.rules",
+      "indexes": "firestore.indexes.json"
+   },
+   "emulators": {
+      "auth": {
+         "port": 9099
+      },
+      "firestore": {
+         "port": 8080
+      },
+      "hosting": {
+         "port": 5000,
+         "public": "public"
+      },
+      "ui": {
+         "enabled": true
+      }
+   },
+   "remoteconfig": {
+      "template": "remoteconfig.template.json"
+   }
+}
