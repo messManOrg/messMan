@@ -58,7 +58,14 @@
       "extends": [
          "react-app",
          "react-app/jest"
-      ]
+      ],
+      "rules": {
+         "prefer-const": "error",
+         "camelcase": "warn",
+         "max-lines": "warn",
+         "complexity": "warn",
+         "max-params": "warn"
+      }
    },
    "prettier": {
       "tabWidth": 3,
