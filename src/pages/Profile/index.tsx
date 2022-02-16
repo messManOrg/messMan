@@ -1,34 +1,34 @@
+import { useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
    Avatar,
-   Button,
    Card,
    CardContent,
-   Fab,
+   IconButton,
    Stack,
    Typography,
 } from '@mui/material';
-import { useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Logout } from '@mui/icons-material';
 import Layout from '../../components/Layout';
 import { RoutePaths } from '../../enums/routes';
 import { useAuth } from '../../store/auth/Provider';
 import MealStatusButton from './MealStatusButton';
 import GuestMealStatusButton from './GuestMealStatusButton';
+import { FabStyled } from './styles';
 
 const Profile: React.FC = () => {
-   const { signout } = useAuth();
+   const { currentUser, signOut } = useAuth();
    const navigate = useNavigate();
    const location = useLocation();
 
-   const fullName = 'Full Name';
    const parmanentAddress = 'Pamanent Address';
-   const phoneNumber = '01xxxxxxxxx';
+   const phoneNumber = currentUser?.phoneNumber || '01xxxxxxxxx';
 
    const handleLogout = useCallback(() => {
-      signout(() => {
+      signOut(() => {
          navigate(RoutePaths.Login, { state: location });
       });
-   }, [navigate, location, signout]);
+   }, [navigate, location, signOut]);
 
    return (
       <Layout>
@@ -37,12 +37,12 @@ const Profile: React.FC = () => {
                <CardContent>
                   <Stack paddingY={1} alignItems='center' spacing={1}>
                      <Avatar sx={{ width: 56, height: 56 }}>
-                        {fullName.charAt(0)}
+                        {currentUser?.displayName?.charAt(0)}
                      </Avatar>
 
                      <Stack alignItems='center'>
                         <Typography fontWeight='medium' variant='h5'>
-                           {fullName}
+                           {currentUser?.displayName}
                         </Typography>
                         <Typography variant='caption'>
                            {parmanentAddress}
@@ -58,9 +58,11 @@ const Profile: React.FC = () => {
             <MealStatusButton />
             <GuestMealStatusButton />
 
-            <Fab>
-               <Button onClick={handleLogout}>Log Out</Button>
-            </Fab>
+            <FabStyled>
+               <IconButton onClick={handleLogout}>
+                  <Logout />
+               </IconButton>
+            </FabStyled>
          </Stack>
       </Layout>
    );

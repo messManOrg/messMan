@@ -3,10 +3,10 @@ import { RoutePaths } from '../enums/routes';
 import { useAuth } from '../store/auth/Provider';
 
 const RequireAuth: React.FC<{ children: JSX.Element }> = ({ children }) => {
-   let auth = useAuth();
-   let location = useLocation();
+   const auth = useAuth();
+   const location = useLocation();
 
-   if (!auth.user) {
+   if (!auth.currentUser) {
       return <Navigate to={RoutePaths.Login} state={{ from: location }} />;
    }
 

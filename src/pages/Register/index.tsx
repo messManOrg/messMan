@@ -1,5 +1,5 @@
-import { Button, Typography, Box, TextField } from '@mui/material';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { Button, Typography, Box, TextField } from '@mui/material';
 import { useAuth } from '../../store/auth/Provider';
 import AuthLayout from '../../components/AuthLayout';
 import { RoutePaths } from '../../enums/routes';
@@ -9,14 +9,14 @@ import {
 } from '../../components/LoginButtons';
 
 const Register: React.FC = () => {
-   let navigate = useNavigate();
-   let location = useLocation();
-   let auth = useAuth();
+   const navigate = useNavigate();
+   const location = useLocation();
+   const auth = useAuth();
 
-   let from = location.state?.from?.pathname || '/';
+   const from = location.state?.from?.pathname || '/';
 
    const handleLogin = () => {
-      auth.signin('demo', () => {
+      auth.signInWithEmail(() => {
          navigate(from, { replace: true });
       });
    };

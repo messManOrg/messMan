@@ -9,14 +9,20 @@ import {
 } from '../../components/LoginButtons';
 
 const Login: React.FC = () => {
-   let navigate = useNavigate();
-   let location = useLocation();
-   let auth = useAuth();
+   const navigate = useNavigate();
+   const location = useLocation();
+   const auth = useAuth();
 
-   let from = location.state?.from?.pathname || '/';
+   const from = location.state?.from?.pathname || '/';
 
    const handleLogin = () => {
-      auth.signin('demo', () => {
+      auth.signInWithEmail(() => {
+         navigate(from, { replace: true });
+      });
+   };
+
+   const handleGoogleLogin = () => {
+      auth.signInWithGoogle(() => {
          navigate(from, { replace: true });
       });
    };
@@ -76,7 +82,7 @@ const Login: React.FC = () => {
             or
          </Typography>
 
-         <GoogleLoginButton handleLogin={handleLogin} />
+         <GoogleLoginButton handleLogin={handleGoogleLogin} />
          <FBLoginButton handleLogin={handleLogin} />
       </AuthLayout>
    );
