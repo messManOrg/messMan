@@ -8,14 +8,14 @@ import {
    AccountCircleRounded,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import { RoutePaths } from '../../enums/routes';
+import { RoutePaths } from 'enums/routes';
 
-const BottomNavBar: React.FC = () => {
+const BottomNavBar = () => {
    const [value, setValue] = useState(window.location.pathname);
 
-   const handleNavChange = (event: any, newValue: string) => {
+   function handleNavChange(event: any, newValue: string) {
       setValue(newValue);
-   };
+   }
 
    return (
       <Paper

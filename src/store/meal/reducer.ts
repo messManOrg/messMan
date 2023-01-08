@@ -1,6 +1,6 @@
 import { IMealAction } from './action';
 import { IMealState } from './initialState';
-import config from '../../config';
+import config from 'config';
 
 function mealReducer(
    state: IMealState,

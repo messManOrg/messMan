@@ -3,69 +3,20 @@
    "version": "0.1.0",
    "private": true,
    "scripts": {
-      "start": "react-scripts start",
-      "start:emulator": "firebase emulators:start",
-      "build": "GENERATE_SOURCEMAP=false react-scripts build",
-      "build:local": "react-scripts build",
-      "test": "react-scripts test",
-      "eject": "react-scripts eject",
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint",
+      "start:emulator": "yarn dlx firebase-tools emulators:start",
+      "test": "echo null",
       "prepare": "npx is-ci || husky install",
       "preci": "rm -rf node_modules",
-      "ci": "yarn install --frozen-lockfile"
+      "ci": "yarn install --frozen-lockfile",
+      "format": "prettier --write ./src"
    },
    "lint-staged": {
       "*.{ts,tsx}": "yarn test --watchAll=false --findRelatedTests",
       "*.{js,jsx,ts,tsx,json,md,html,yaml}": "yarn prettier --write"
-   },
-   "dependencies": {
-      "@emotion/react": "^11.7.0",
-      "@emotion/styled": "^11.6.0",
-      "@mui/icons-material": "^5.2.1",
-      "@mui/material": "^5.2.3",
-      "firebase": "^9.6.6",
-      "react": "^17.0.2",
-      "react-dom": "^17.0.2",
-      "react-router-dom": "6",
-      "react-scripts": "4.0.3",
-      "web-vitals": "^0.2.4",
-      "workbox-background-sync": "^5.1.3",
-      "workbox-broadcast-update": "^5.1.3",
-      "workbox-cacheable-response": "^5.1.3",
-      "workbox-core": "^5.1.3",
-      "workbox-expiration": "^5.1.3",
-      "workbox-google-analytics": "^5.1.3",
-      "workbox-navigation-preload": "^5.1.3",
-      "workbox-precaching": "^5.1.3",
-      "workbox-range-requests": "^5.1.3",
-      "workbox-routing": "^5.1.3",
-      "workbox-strategies": "^5.1.3",
-      "workbox-streams": "^5.1.3"
-   },
-   "devDependencies": {
-      "@testing-library/jest-dom": "^5.16.0",
-      "@testing-library/react": "^12.1.2",
-      "@testing-library/user-event": "^13.5.0",
-      "@types/jest": "^27.0.3",
-      "@types/node": "^16.11.11",
-      "@types/react": "^17.0.37",
-      "@types/react-dom": "^17.0.11",
-      "husky": "^7.0.4",
-      "lint-staged": "^12.1.3",
-      "prettier": "^2.5.1",
-      "typescript": "^4.5.2"
-   },
-   "eslintConfig": {
-      "extends": [
-         "react-app",
-         "react-app/jest"
-      ],
-      "rules": {
-         "prefer-const": "error",
-         "camelcase": "warn",
-         "max-lines": "warn",
-         "complexity": "warn",
-         "max-params": "warn"
-      }
    },
    "prettier": {
       "tabWidth": 3,
@@ -74,16 +25,39 @@
       "arrowParens": "avoid",
       "endOfLine": "lf"
    },
-   "browserslist": {
-      "production": [
-         ">0.2%",
-         "not dead",
-         "not op_mini all"
-      ],
-      "development": [
-         "last 1 chrome version",
-         "last 1 firefox version",
-         "last 1 safari version"
-      ]
+   "dependencies": {
+      "@emotion/cache": "^11.10.5",
+      "@emotion/react": "^11.10.5",
+      "@emotion/styled": "^11.10.5",
+      "@mui/icons-material": "^5.11.0",
+      "@mui/material": "^5.11.3",
+      "@next/font": "13.1.1",
+      "@types/node": "18.11.18",
+      "@types/react": "18.0.26",
+      "@types/react-dom": "18.0.10",
+      "eslint": "8.31.0",
+      "eslint-config-next": "13.1.1",
+      "next": "13.1.1",
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-router-dom": "^6.6.1",
+      "typescript": "4.9.4",
+      "workbox-background-sync": "^6.5.4",
+      "workbox-broadcast-update": "^6.5.4",
+      "workbox-cacheable-response": "^6.5.4",
+      "workbox-core": "^6.5.4",
+      "workbox-expiration": "^6.5.4",
+      "workbox-google-analytics": "^6.5.4",
+      "workbox-navigation-preload": "^6.5.4",
+      "workbox-precaching": "^6.5.4",
+      "workbox-range-requests": "^6.5.4",
+      "workbox-routing": "^6.5.4",
+      "workbox-strategies": "^6.5.4",
+      "workbox-streams": "^6.5.4"
+   },
+   "devDependencies": {
+      "husky": "^8.0.3",
+      "lint-staged": "^13.1.0",
+      "prettier": "^2.8.2"
    }
 }

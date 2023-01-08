@@ -5,7 +5,7 @@ export interface IAuthState {
 }
 
 const initialState: IAuthState = {
-   currentUser: null,
+   currentUser: true,
 };
 
 export default initialState;

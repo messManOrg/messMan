@@ -1,4 +1,10 @@
-import { createContext, useContext, useMemo, useReducer } from 'react';
+import {
+   createContext,
+   PropsWithChildren,
+   useContext,
+   useMemo,
+   useReducer,
+} from 'react';
 import { IMealAction } from './action';
 import initialState, { IMealState } from './initialState';
 import mealReducer from './reducer';
@@ -9,7 +15,7 @@ const MealContext = createContext<MealContextType>(null!);
 
 export const useMealStore = () => useContext(MealContext);
 
-const MealStoreProvider: React.FC = ({ children }) => {
+const MealStoreProvider: React.FC<PropsWithChildren> = props => {
    const [state, dispatch] = useReducer(mealReducer, initialState);
 
    const memorizedValue: MealContextType = useMemo(
@@ -19,7 +25,7 @@ const MealStoreProvider: React.FC = ({ children }) => {
 
    return (
       <MealContext.Provider value={memorizedValue}>
-         {children}
+         {props.children}
       </MealContext.Provider>
    );
 };

@@ -1,6 +1,6 @@
 import { Backdrop, CircularProgress } from '@mui/material';
 
-const OverlayLoading: React.FC = () => {
+const OverlayLoading = () => {
    return (
       <Backdrop
          open

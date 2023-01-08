@@ -1,7 +1,7 @@
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import { Card, CardContent, CardHeader, Stack } from '@mui/material';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Reviews, Star } from '@mui/icons-material';
 
 const labels: { [index: string]: string } = {
@@ -16,13 +16,13 @@ const RatingCard: React.FC = () => {
    const [value, setValue] = useState<number | null>(3);
    const [hover, setHover] = useState(-1);
 
-   const handleChange = useCallback((event, newValue) => {
+   function handleChange(event, newValue) {
       setValue(newValue);
-   }, []);
+   }
 
-   const handleChangeActive = useCallback((event, newHover) => {
+   function handleChangeActive(event, newHover) {
       setHover(newHover);
-   }, []);
+   }
 
    return (
       <Card>
