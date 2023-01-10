@@ -1,28 +1,33 @@
 import { Button, Typography, Box, TextField } from '@mui/material';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { useAuth } from 'store/auth/Provider';
+import { useAuthActions } from 'store/auth/Provider';
 import { RoutePaths } from 'enums/routes';
 import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
+import Head from 'next/head';
 
 const Login: React.FC = () => {
    const navigate = useNavigate();
    const location = useLocation();
-   const auth = useAuth();
+   const auth = useAuthActions();
 
-   const from = location.state?.from?.pathname || '/';
+   const from = location.state?.from?.pathname || '/app';
 
-   const handleLogin = () => {
+   function handleLogin() {
       auth.signInWithEmail(() => {
          navigate(from, { replace: true });
       });
-   };
+   }
 
-   const handleGoogleLogin = () => {
+   function handleGoogleLogin() {
       auth.signInWithGoogle(() => navigate(from, { replace: true }));
-   };
+   }
 
    return (
       <>
+         <Head>
+            <title>Login</title>
+         </Head>
+
          <Typography variant='h4' gutterBottom align='center'>
             Login
          </Typography>
@@ -47,7 +52,7 @@ const Login: React.FC = () => {
 
          <Box display='flex' justifyContent='space-between' marginY={1}>
             <Typography marginY={1}>
-               Don't have an Account?{' '}
+               {`Don't have an Account? `}
                <Link
                   style={{ textDecoration: 'none' }}
                   to={RoutePaths.Register}

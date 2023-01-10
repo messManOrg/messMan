@@ -1,21 +1,21 @@
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Button, Typography, Box, TextField } from '@mui/material';
-import { useAuth } from 'store/auth/Provider';
+import { useAuthActions } from 'store/auth/Provider';
 import { RoutePaths } from 'enums/routes';
 import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
 
 const Register: React.FC = () => {
    const navigate = useNavigate();
    const location = useLocation();
-   const auth = useAuth();
+   const auth = useAuthActions();
 
-   const from = location.state?.from?.pathname || '/';
+   const from = location.state?.from?.pathname || '/app';
 
-   const handleLogin = () => {
+   function handleLogin() {
       auth.signInWithEmail(() => {
          navigate(from, { replace: true });
       });
-   };
+   }
 
    return (
       <>

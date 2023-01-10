@@ -24,7 +24,7 @@ export const ForgetPassword = () => {
          </Button>
 
          <Typography marginY={2}>
-            Don't have an Account?{' '}
+            {`Don't have an Account? `}
             <Link style={{ textDecoration: 'none' }} to={RoutePaths.Register}>
                Register here
             </Link>

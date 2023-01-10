@@ -1,11 +1,14 @@
-import { User } from 'firebase/auth';
+interface User {
+   displayName?: string;
+   phoneNumber?: string;
+}
 
 export interface IAuthState {
    currentUser: User | null;
 }
 
-const initialState: IAuthState = {
-   currentUser: true,
-};
+const initialState = {
+   currentUser: null,
+} satisfies IAuthState;
 
 export default initialState;

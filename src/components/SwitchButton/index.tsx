@@ -4,11 +4,9 @@ interface Props extends ButtonProps {
    checked: SwitchProps['checked'];
 }
 
-const SwitchButton: React.FC<Props> = ({
-   checked,
-   children,
-   ...buttonProps
-}) => {
+const SwitchButton: React.FC<Props> = props => {
+   const { checked, children, ...buttonProps } = props;
+
    return (
       <Button fullWidth variant='contained' {...buttonProps}>
          <Stack

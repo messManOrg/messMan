@@ -8,8 +8,8 @@ import {
    Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import config from '../../config';
-import { RoutePaths } from '../../enums/routes';
+import config from 'config';
+import { RoutePaths } from 'enums/routes';
 
 const TheAppBar: React.FC = () => {
    return (

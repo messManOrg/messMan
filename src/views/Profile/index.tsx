@@ -1,30 +1,24 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-   Avatar,
-   Card,
-   CardContent,
-   IconButton,
-   Stack,
-   Typography,
-} from '@mui/material';
-import { Logout } from '@mui/icons-material';
+import { Avatar, Card, CardContent, Stack, Typography } from '@mui/material';
 import { RoutePaths } from 'enums/routes';
-import { useAuth } from 'store/auth/Provider';
+import { useAuth, useAuthActions } from 'store/auth/Provider';
 import MealStatusButton from './components/MealStatusButton';
 import GuestMealStatusButton from './components/GuestMealStatusButton';
-import { FabStyled } from './styles';
+import LogoutButton from './components/LogoutButton';
 
 const Profile: React.FC = () => {
-   const { currentUser, signOut } = useAuth();
+   const { currentUser } = useAuth();
+   const { signOut } = useAuthActions();
    const navigate = useNavigate();
    const location = useLocation();
 
-   const parmanentAddress = 'Pamanent Address';
-   const phoneNumber = currentUser?.phoneNumber || '01xxxxxxxxx';
+   const permanentAddress = 'In a Galaxy, far far away!';
 
    function handleLogout() {
       signOut(() => {
-         navigate(RoutePaths.Login, { state: location });
+         navigate(RoutePaths.Login, {
+            state: { from: location },
+         });
       });
    }
 
@@ -42,10 +36,10 @@ const Profile: React.FC = () => {
                         {currentUser?.displayName}
                      </Typography>
                      <Typography variant='caption'>
-                        {parmanentAddress}
+                        {permanentAddress}
                      </Typography>
                      <Typography fontWeight='light' variant='subtitle2'>
-                        {phoneNumber}
+                        {currentUser?.phoneNumber}
                      </Typography>
                   </Stack>
                </Stack>
@@ -55,11 +49,7 @@ const Profile: React.FC = () => {
          <MealStatusButton />
          <GuestMealStatusButton />
 
-         <FabStyled>
-            <IconButton onClick={handleLogout}>
-               <Logout />
-            </IconButton>
-         </FabStyled>
+         <LogoutButton onClick={handleLogout} />
       </Stack>
    );
 };

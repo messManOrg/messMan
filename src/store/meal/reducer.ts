@@ -2,10 +2,7 @@ import { IMealAction } from './action';
 import { IMealState } from './initialState';
 import config from 'config';
 
-function mealReducer(
-   state: IMealState,
-   { type, payload }: IMealAction
-): IMealState {
+function mealReducer(state: IMealState, { type }: IMealAction): IMealState {
    function newState(updatedStateProps: Partial<IMealState>) {
       return {
          ...state,

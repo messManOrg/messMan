@@ -1,33 +1,25 @@
-import {
-   createContext,
-   PropsWithChildren,
-   useContext,
-   useMemo,
-   useReducer,
-} from 'react';
+import React from 'react';
 import { IMealAction } from './action';
 import initialState, { IMealState } from './initialState';
 import mealReducer from './reducer';
 
-type MealContextType = [IMealState, React.Dispatch<IMealAction>];
+const MealContext = React.createContext({} as IMealState);
+const MealDispatchContext = React.createContext(
+   {} as React.Dispatch<IMealAction>
+);
 
-const MealContext = createContext<MealContextType>(null!);
-
-export const useMealStore = () => useContext(MealContext);
-
-const MealStoreProvider: React.FC<PropsWithChildren> = props => {
-   const [state, dispatch] = useReducer(mealReducer, initialState);
-
-   const memorizedValue: MealContextType = useMemo(
-      () => [state, dispatch],
-      [state, dispatch]
-   );
+const MealStoreProvider: React.FC<React.PropsWithChildren> = props => {
+   const [state, dispatch] = React.useReducer(mealReducer, initialState);
 
    return (
-      <MealContext.Provider value={memorizedValue}>
-         {props.children}
-      </MealContext.Provider>
+      <MealDispatchContext.Provider value={dispatch}>
+         <MealContext.Provider value={state}>
+            {props.children}
+         </MealContext.Provider>
+      </MealDispatchContext.Provider>
    );
 };
 
+export const useMealState = () => React.useContext(MealContext);
+export const useMealDispatch = () => React.useContext(MealDispatchContext);
 export default MealStoreProvider;

@@ -16,11 +16,11 @@ const RatingCard: React.FC = () => {
    const [value, setValue] = useState<number | null>(3);
    const [hover, setHover] = useState(-1);
 
-   function handleChange(event, newValue) {
+   function handleChange(event: unknown, newValue: number | null) {
       setValue(newValue);
    }
 
-   function handleChangeActive(event, newHover) {
+   function handleChangeActive(event: unknown, newHover: number) {
       setHover(newHover);
    }
 
@@ -41,9 +41,7 @@ const RatingCard: React.FC = () => {
                   value={value}
                   onChange={handleChange}
                   onChangeActive={handleChangeActive}
-                  emptyIcon={
-                     <Star style={{ opacity: 0.55 }} fontSize='inherit' />
-                  }
+                  emptyIcon={<Star sx={{ opacity: 0.55 }} fontSize='inherit' />}
                />
             </Stack>
          </CardContent>

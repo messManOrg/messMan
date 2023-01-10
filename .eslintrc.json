@@ -5,6 +5,7 @@
       "camelcase": "warn",
       "max-lines": "warn",
       "complexity": "warn",
-      "max-params": "warn"
+      "max-params": "warn",
+      "no-unused-vars": "error"
    }
 }

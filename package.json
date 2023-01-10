@@ -7,7 +7,6 @@
       "build": "next build",
       "start": "next start",
       "lint": "next lint",
-      "start:emulator": "yarn dlx firebase-tools emulators:start",
       "test": "echo null",
       "prepare": "npx is-ci || husky install",
       "preci": "rm -rf node_modules",
