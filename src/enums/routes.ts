@@ -1,3 +1,6 @@
+// TODO: should fixed by a typescript parser for eslint
+/* eslint-disable no-unused-vars */
+
 // no slash prefix === nested routes
 export enum RoutePaths {
    Home = '',

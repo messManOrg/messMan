@@ -3,6 +3,7 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { useAuthActions } from 'store/auth/Provider';
 import { RoutePaths } from 'enums/routes';
 import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
+import Head from 'next/head';
 
 const Login: React.FC = () => {
    const navigate = useNavigate();
@@ -11,18 +12,22 @@ const Login: React.FC = () => {
 
    const from = location.state?.from?.pathname || '/app';
 
-   const handleLogin = () => {
+   function handleLogin() {
       auth.signInWithEmail(() => {
          navigate(from, { replace: true });
       });
-   };
+   }
 
-   const handleGoogleLogin = () => {
+   function handleGoogleLogin() {
       auth.signInWithGoogle(() => navigate(from, { replace: true }));
-   };
+   }
 
    return (
       <>
+         <Head>
+            <title>Login</title>
+         </Head>
+
          <Typography variant='h4' gutterBottom align='center'>
             Login
          </Typography>

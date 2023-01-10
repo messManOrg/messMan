@@ -1,10 +1,10 @@
 import { Logout } from '@mui/icons-material';
 import { Fab, IconButton, IconButtonProps, styled } from '@mui/material';
 
-export default function LogoutButton({ onClick }: IconButtonProps) {
+export default function LogoutButton(props: IconButtonProps) {
    return (
       <FabStyle>
-         <IconButton onClick={onClick} color='inherit'>
+         <IconButton component='span' color='inherit' {...props}>
             <Logout />
          </IconButton>
       </FabStyle>

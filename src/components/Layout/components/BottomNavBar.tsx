@@ -13,7 +13,7 @@ import { RoutePaths } from 'enums/routes';
 const BottomNavBar = () => {
    const [value, setValue] = useState(window.location.pathname);
 
-   function handleNavChange(event: any, newValue: string) {
+   function handleNavChange(event: unknown, newValue: string) {
       setValue(newValue);
    }
 

@@ -4,8 +4,11 @@ import authReducer from './reducer';
 // import OverlayLoading from 'components/OverlayLoading';
 
 interface AuthContextType {
+   // eslint-disable-next-line no-unused-vars
    signInWithEmail: (callback: VoidFunction) => void;
+   // eslint-disable-next-line no-unused-vars
    signInWithGoogle: (callback: VoidFunction) => void;
+   // eslint-disable-next-line no-unused-vars
    signOut: (callback: VoidFunction) => void;
 }
 
@@ -13,31 +16,43 @@ const AuthContext = React.createContext<{
    currentUser: IAuthState['currentUser'];
 }>(null!);
 
-const AuthActionContext = React.createContext<AuthContextType>(
-   null as unknown as AuthContextType
-);
+const AuthActionContext = React.createContext({} as AuthContextType);
 
 const AuthProvider: React.FC<React.PropsWithChildren> = props => {
    const [state, dispatch] = React.useReducer(authReducer, initialState);
-   const [isLoading, setIsLoading] = React.useState(true);
+   // const [isLoading, setIsLoading] = React.useState(true);
 
-   function handleError(error: any) {
-      console.error(error);
-      setIsLoading(false);
-   }
+   // function handleError(error: any) {
+   //    console.error(error);
+   //    setIsLoading(false);
+   // }
+
+   const user = {
+      displayName: 'Somebody',
+      phoneNumber: '00000000',
+   };
 
    function signInWithEmail(callback: VoidFunction) {
-      dispatch({ type: 'setUser', payload: true });
+      dispatch({
+         type: 'setUser',
+         payload: user,
+      });
       callback();
    }
 
    function signInWithGoogle(callback: VoidFunction) {
-      dispatch({ type: 'setUser', payload: true });
+      dispatch({
+         type: 'setUser',
+         payload: user,
+      });
       callback();
    }
 
    function signOut(callback: VoidFunction) {
-      dispatch({ type: 'setUser', payload: null });
+      dispatch({
+         type: 'setUser',
+         payload: null,
+      });
       callback();
    }
 

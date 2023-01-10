@@ -3,9 +3,9 @@ import { IMealAction } from './action';
 import initialState, { IMealState } from './initialState';
 import mealReducer from './reducer';
 
-const MealContext = React.createContext<IMealState>(null!);
-const MealDispatchContext = React.createContext<React.Dispatch<IMealAction>>(
-   null!
+const MealContext = React.createContext({} as IMealState);
+const MealDispatchContext = React.createContext(
+   {} as React.Dispatch<IMealAction>
 );
 
 const MealStoreProvider: React.FC<React.PropsWithChildren> = props => {

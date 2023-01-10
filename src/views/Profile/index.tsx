@@ -12,12 +12,13 @@ const Profile: React.FC = () => {
    const navigate = useNavigate();
    const location = useLocation();
 
-   const parmanentAddress = 'Pamanent Address';
-   const phoneNumber = currentUser?.phoneNumber || '01xxxxxxxxx';
+   const permanentAddress = 'In a Galaxy, far far away!';
 
    function handleLogout() {
       signOut(() => {
-         navigate(RoutePaths.Login, { state: location });
+         navigate(RoutePaths.Login, {
+            state: { from: location },
+         });
       });
    }
 
@@ -35,10 +36,10 @@ const Profile: React.FC = () => {
                         {currentUser?.displayName}
                      </Typography>
                      <Typography variant='caption'>
-                        {parmanentAddress}
+                        {permanentAddress}
                      </Typography>
                      <Typography fontWeight='light' variant='subtitle2'>
-                        {phoneNumber}
+                        {currentUser?.phoneNumber}
                      </Typography>
                   </Stack>
                </Stack>

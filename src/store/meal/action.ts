@@ -10,10 +10,3 @@ export interface IMealAction {
    type: MealActionTypes;
    payload?: any;
 }
-
-// export default function action(
-//    type: IAction['type'],
-//    payload?: IAction['payload']
-// ): IAction {
-//    return { type, payload };
-// }

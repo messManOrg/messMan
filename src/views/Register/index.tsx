@@ -11,11 +11,11 @@ const Register: React.FC = () => {
 
    const from = location.state?.from?.pathname || '/app';
 
-   const handleLogin = () => {
+   function handleLogin() {
       auth.signInWithEmail(() => {
          navigate(from, { replace: true });
       });
-   };
+   }
 
    return (
       <>

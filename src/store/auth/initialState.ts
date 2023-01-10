@@ -1,9 +1,14 @@
-export interface IAuthState {
-   currentUser: boolean | null;
+interface User {
+   displayName?: string;
+   phoneNumber?: string;
 }
 
-const initialState: IAuthState = {
-   currentUser: false,
-};
+export interface IAuthState {
+   currentUser: User | null;
+}
+
+const initialState = {
+   currentUser: null,
+} satisfies IAuthState;
 
 export default initialState;

@@ -10,6 +10,7 @@ import {
 import { useMemo } from 'react';
 import { Roboto } from '@next/font/google';
 import AuthProvider from 'store/auth/Provider';
+import Head from 'next/head';
 
 const serviceWorkerRegistration = () => import('serviceWorkerRegistration');
 
@@ -33,6 +34,19 @@ export default function App({ Component, pageProps }: AppProps) {
 
    return (
       <div className={roboto.className}>
+         <Head>
+            <meta
+               name='viewport'
+               content='width=device-width, initial-scale=1'
+            />
+            <meta
+               name='description'
+               content='The quick brown fox jumps over the lazy dog'
+            />
+            <link rel='icon' href='/favicon.ico' />
+            <title>Mess Management App</title>
+         </Head>
+
          <CacheProvider value={cache}>
             <ThemeProvider theme={theme}>
                <CssBaseline />

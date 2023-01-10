@@ -30,7 +30,7 @@ const GuestMealStatusButton: React.FC = () => {
       <>
          <SwitchButton
             checked={guestMealStatus}
-            // color='inherit'
+            color='secondary'
             onClick={toggleGuestMealSwitch}
          >
             Guest Meal
