@@ -6,19 +6,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Avatar, AvatarGroup, Button } from '@mui/material';
 
-function createData(name: string, date: Date) {
-   return { name, date };
+import { formateDate } from 'utils/formateDate';
+import UserList from './components/UserList';
+
+function createData(user: string[], date: Date) {
+   return { user, date };
 }
 
 const rows = [
-   createData('Frozen yoghurt', new Date()),
-   createData('Ice cream sandwich', new Date()),
-   createData('Eclair', new Date()),
-   createData('Cupcake', new Date()),
-   createData('Gingerbread', new Date()),
-   createData('Gingerbread', new Date()),
+   createData(['Frozen yoghurt', 'shakil Ahmed'], new Date()),
+   createData([' Yoghurt Frozen'], new Date()),
+   createData(['Rokon', 'Polok', 'Hasibul'], new Date()),
 ];
 
 const Bazar: React.FC = () => {
@@ -27,34 +26,22 @@ const Bazar: React.FC = () => {
          <Table aria-label='simple table'>
             <TableHead>
                <TableRow>
-                  <TableCell>Avatar</TableCell>
-                  <TableCell align='right'>Names</TableCell>
-                  <TableCell align='right'>Date</TableCell>
+                  <TableCell align='left'>Users</TableCell>
+                  <TableCell align='left'>Date</TableCell>
                </TableRow>
             </TableHead>
             <TableBody>
-               {rows.map(row => (
+               {rows.map((row, index) => (
                   <TableRow
-                     key={row.name}
+                     key={index}
                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
-                     <TableCell component='th' scope='row'>
-                        <AvatarGroup max={2}>
-                           <Avatar
-                              alt='Shakil Ahmed'
-                              src='/static/images/avatar/1.jpg'
-                           />
-                           <Avatar
-                              alt='Shakil Ahmed'
-                              src='/static/images/avatar/1.jpg'
-                           />
-                        </AvatarGroup>
+                     <TableCell component='th' scope='row' align='left'>
+                        <UserList user={row.user} />
                      </TableCell>
-                     <TableCell component='th' scope='row'>
-                        {row.name}
-                     </TableCell>
-                     <TableCell align='right'>
-                        {JSON.stringify(row.date)}
+
+                     <TableCell align='left' width={150}>
+                        {formateDate(row.date)}
                      </TableCell>
                   </TableRow>
                ))}
