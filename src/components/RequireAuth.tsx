@@ -1,9 +1,12 @@
-import { PropsWithChildren } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { RoutePaths } from 'enums/routes';
 import { useAuth } from 'store/auth/Provider';
 
-const RequireAuth: React.FC<PropsWithChildren> = props => {
+interface Props {
+   children: JSX.Element;
+}
+
+const RequireAuth: React.FC<Props> = props => {
    const auth = useAuth();
    const location = useLocation();
 
