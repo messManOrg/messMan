@@ -9,13 +9,14 @@ import {
 } from '@mui/material';
 import { Logout } from '@mui/icons-material';
 import { RoutePaths } from 'enums/routes';
-import { useAuth } from 'store/auth/Provider';
+import { useAuth, useAuthActions } from 'store/auth/Provider';
 import MealStatusButton from './components/MealStatusButton';
 import GuestMealStatusButton from './components/GuestMealStatusButton';
 import { FabStyled } from './styles';
 
 const Profile: React.FC = () => {
-   const { currentUser, signOut } = useAuth();
+   const { currentUser } = useAuth();
+   const { signOut } = useAuthActions();
    const navigate = useNavigate();
    const location = useLocation();
 

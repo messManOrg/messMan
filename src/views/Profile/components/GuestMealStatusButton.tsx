@@ -8,10 +8,11 @@ import {
    Typography,
 } from '@mui/material';
 import SwitchButton from 'components/SwitchButton';
-import { useMealStore } from 'store/meal/Provider';
+import { useMealDispatch, useMealState } from 'store/meal/Provider';
 
 const GuestMealStatusButton: React.FC = () => {
-   const [{ guestMealStatus, guestMealAmount }, dispatchMeal] = useMealStore();
+   const { guestMealStatus, guestMealAmount } = useMealState();
+   const dispatchMeal = useMealDispatch();
 
    function toggleGuestMealSwitch() {
       dispatchMeal({ type: 'set-status/guest-meal' });
@@ -34,6 +35,7 @@ const GuestMealStatusButton: React.FC = () => {
          >
             Guest Meal
          </SwitchButton>
+
          <Collapse in={guestMealStatus} timeout='auto'>
             <Card>
                <CardContent sx={{ py: '0 !important' }}>

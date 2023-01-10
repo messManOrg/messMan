@@ -8,10 +8,11 @@ import {
    Typography,
 } from '@mui/material';
 import SwitchButton from 'components/SwitchButton';
-import { useMealStore } from 'store/meal/Provider';
+import { useMealDispatch, useMealState } from 'store/meal/Provider';
 
 const MealStatusButton: React.FC = () => {
-   const [{ mealStatus, mealAmount }, dispatchMeal] = useMealStore();
+   const { mealStatus, mealAmount } = useMealState();
+   const dispatchMeal = useMealDispatch();
 
    function toggleMealSwitch() {
       dispatchMeal({ type: 'set-status/meal' });

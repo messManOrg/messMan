@@ -1,15 +1,15 @@
 import { Button, Typography, Box, TextField } from '@mui/material';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { useAuth } from 'store/auth/Provider';
+import { useAuthActions } from 'store/auth/Provider';
 import { RoutePaths } from 'enums/routes';
 import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
 
 const Login: React.FC = () => {
    const navigate = useNavigate();
    const location = useLocation();
-   const auth = useAuth();
+   const auth = useAuthActions();
 
-   const from = location.state?.from?.pathname || '/';
+   const from = location.state?.from?.pathname || '/app';
 
    const handleLogin = () => {
       auth.signInWithEmail(() => {
@@ -47,7 +47,7 @@ const Login: React.FC = () => {
 
          <Box display='flex' justifyContent='space-between' marginY={1}>
             <Typography marginY={1}>
-               Don't have an Account?{' '}
+               {`Don't have an Account? `}
                <Link
                   style={{ textDecoration: 'none' }}
                   to={RoutePaths.Register}

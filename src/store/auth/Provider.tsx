@@ -4,19 +4,21 @@ import authReducer from './reducer';
 // import OverlayLoading from 'components/OverlayLoading';
 
 interface AuthContextType {
-   currentUser: IAuthState['currentUser'];
    signInWithEmail: (callback: VoidFunction) => void;
    signInWithGoogle: (callback: VoidFunction) => void;
    signOut: (callback: VoidFunction) => void;
 }
 
-const AuthContext = React.createContext<AuthContextType>(null!);
+const AuthContext = React.createContext<{
+   currentUser: IAuthState['currentUser'];
+}>(null!);
 
-const AuthProvider: React.FC<PropsWithChildren> = props => {
-   const [{ currentUser }, dispatch] = React.useReducer(
-      authReducer,
-      initialState
-   );
+const AuthActionContext = React.createContext<AuthContextType>(
+   null as unknown as AuthContextType
+);
+
+const AuthProvider: React.FC<React.PropsWithChildren> = props => {
+   const [state, dispatch] = React.useReducer(authReducer, initialState);
    const [isLoading, setIsLoading] = React.useState(true);
 
    function handleError(error: any) {
@@ -25,30 +27,36 @@ const AuthProvider: React.FC<PropsWithChildren> = props => {
    }
 
    function signInWithEmail(callback: VoidFunction) {
+      dispatch({ type: 'setUser', payload: true });
       callback();
    }
 
    function signInWithGoogle(callback: VoidFunction) {
+      dispatch({ type: 'setUser', payload: true });
       callback();
    }
 
    function signOut(callback: VoidFunction) {
+      dispatch({ type: 'setUser', payload: null });
       callback();
    }
 
-   const value = {
-      currentUser,
+   const actions = {
       signInWithEmail,
       signInWithGoogle,
       signOut,
    };
 
    return (
-      <AuthContext.Provider value={value}>
-         {props.children}
-      </AuthContext.Provider>
+      <AuthActionContext.Provider value={actions}>
+         {/* state might update more frequently than actions */}
+         <AuthContext.Provider value={state}>
+            {props.children}
+         </AuthContext.Provider>
+      </AuthActionContext.Provider>
    );
 };
 
 export const useAuth = () => React.useContext(AuthContext);
+export const useAuthActions = () => React.useContext(AuthActionContext);
 export default AuthProvider;
