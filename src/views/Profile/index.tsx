@@ -1,18 +1,10 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-   Avatar,
-   Card,
-   CardContent,
-   IconButton,
-   Stack,
-   Typography,
-} from '@mui/material';
-import { Logout } from '@mui/icons-material';
+import { Avatar, Card, CardContent, Stack, Typography } from '@mui/material';
 import { RoutePaths } from 'enums/routes';
 import { useAuth, useAuthActions } from 'store/auth/Provider';
 import MealStatusButton from './components/MealStatusButton';
 import GuestMealStatusButton from './components/GuestMealStatusButton';
-import { FabStyled } from './styles';
+import LogoutButton from './components/LogoutButton';
 
 const Profile: React.FC = () => {
    const { currentUser } = useAuth();
@@ -56,11 +48,7 @@ const Profile: React.FC = () => {
          <MealStatusButton />
          <GuestMealStatusButton />
 
-         <FabStyled>
-            <IconButton onClick={handleLogout}>
-               <Logout />
-            </IconButton>
-         </FabStyled>
+         <LogoutButton onClick={handleLogout} />
       </Stack>
    );
 };

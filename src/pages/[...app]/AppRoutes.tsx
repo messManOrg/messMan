@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import AuthLayout from 'components/AuthLayout';
-import Layout from 'components/Layout';
+import AuthLayout from 'components/Layout/Auth';
+import MainLayout from 'components/Layout/Main';
 import Bazar from 'views/Bazar';
 import { ForgetPassword } from 'views/ForgetPassword';
 import Home from 'views/Home';
@@ -14,7 +14,7 @@ import Register from 'views/Register';
 export default function AppRoutes() {
    return (
       <Routes>
-         <Route path='/app' element={<Layout />}>
+         <Route path='/app' element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path='bazar' element={<Bazar />} />
             <Route path='meals' element={<Meals />} />

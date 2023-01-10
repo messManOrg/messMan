@@ -3,7 +3,7 @@ import { RoutePaths } from 'enums/routes';
 import { useAuth } from 'store/auth/Provider';
 
 interface Props {
-   children: JSX.Element;
+   children: React.ReactNode;
 }
 
 const RequireAuth: React.FC<Props> = props => {
@@ -14,7 +14,7 @@ const RequireAuth: React.FC<Props> = props => {
       return <Navigate to={RoutePaths.Login} state={{ from: location }} />;
    }
 
-   return props.children;
+   return <>{props.children}</>;
 };
 
 export default RequireAuth;

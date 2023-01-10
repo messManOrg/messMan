@@ -13,12 +13,9 @@ interface Props extends CardProps {
    path: string;
 }
 
-const CardLinkWithCaption: React.FC<Props> = ({
-   caption,
-   path,
-   children,
-   ...cardProps
-}) => {
+const CardLinkWithCaption: React.FC<Props> = props => {
+   const { caption, path, children, ...cardProps } = props;
+
    return (
       <Card {...cardProps}>
          <CardActionArea component={Link} to={path}>
