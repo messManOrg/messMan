@@ -16,7 +16,7 @@ function createData(user: string[], date: Date) {
 
 const rows = [
    createData(['Frozen yoghurt', 'shakil Ahmed'], new Date()),
-   createData([' Yoghurt Frozen'], new Date()),
+   createData(['Yoghurt Frozen'], new Date()),
    createData(['Rokon', 'Polok', 'Hasibul'], new Date()),
 ];
 
