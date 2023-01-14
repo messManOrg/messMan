@@ -7,24 +7,8 @@ import {
    ListItemButton,
    ListItemText,
 } from '@mui/material';
-import React from 'react';
 
-const User = ({ name }: { name: string }) => (
-   <Grid item>
-      <ListItemButton>
-         <ListItemAvatar>
-            <Avatar
-               sx={{ width: 30, height: 30 }}
-               alt={name}
-               src={`/static/images/avatar.jpg`}
-            />
-         </ListItemAvatar>
-         <ListItemText primary={name} />
-      </ListItemButton>
-   </Grid>
-);
-
-const UserList = ({ user }: { user: string[] }) => {
+function UserList({ user }: { user: string[] }) {
    return (
       <List>
          <ListItem disablePadding>
@@ -36,6 +20,22 @@ const UserList = ({ user }: { user: string[] }) => {
          </ListItem>
       </List>
    );
-};
+}
 
+function User({ name }: { name: string }) {
+   return (
+      <Grid item>
+         <ListItemButton>
+            <ListItemAvatar>
+               <Avatar
+                  sx={{ width: 30, height: 30 }}
+                  alt={name}
+                  src={`/static/images/avatar.jpg`}
+               />
+            </ListItemAvatar>
+            <ListItemText primary={name} />
+         </ListItemButton>
+      </Grid>
+   );
+}
 export default UserList;

@@ -1,24 +1,24 @@
-import * as React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Chip } from '@mui/material';
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import CloseIcon from '@mui/icons-material/Close';
-const Members: React.FC = () => {
+import ActionButton from './components/ActionButton';
+import SearchUser from './components/SearchUser';
+
+function Members() {
    return (
       <Box>
-         <Typography variant='h6' marginY={2}>
-            All Members
-         </Typography>
+         <SearchUser />
          <List>
             {[0, 1, 2, 3, 4, 5, 6].map(value => {
                return (
                   <ListItem
                      key={value}
-                     secondaryAction={<CloseIcon />}
+                     secondaryAction={<ActionButton />}
                      disablePadding
                   >
                      <ListItemButton>
@@ -29,7 +29,19 @@ const Members: React.FC = () => {
                               sx={{ width: 30, height: 30 }}
                            />
                         </ListItemAvatar>
-                        <ListItemText primary={`Line item ${value + 1}`} />
+                        <ListItemText
+                           primary={`User No ${value + 1}`}
+                           secondary={
+                              value === 2 && (
+                                 <Chip
+                                    color='primary'
+                                    label='manager'
+                                    variant='outlined'
+                                    size='small'
+                                 />
+                              )
+                           }
+                        />
                      </ListItemButton>
                   </ListItem>
                );
@@ -37,6 +49,6 @@ const Members: React.FC = () => {
          </List>
       </Box>
    );
-};
+}
 
 export default Members;
