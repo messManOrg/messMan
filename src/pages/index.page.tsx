@@ -3,20 +3,18 @@ import Link from 'next/link';
 
 export default function LandingPage() {
    return (
-      <main>
-         <Container sx={{ textAlign: 'center' }}>
-            <h1>Landing Page</h1>
+      <Container sx={{ textAlign: 'center' }}>
+         <h1>Landing Page</h1>
 
-            <Stack direction='row' gap={3} justifyContent='center'>
-               <Button variant='contained' component={Link} href='/app'>
-                  Go to Web App
-               </Button>
+         <Stack direction='row' gap={3} justifyContent='center'>
+            <Button variant='contained' component={Link} href='/app'>
+               Go to Web App
+            </Button>
 
-               <Button variant='outlined' disabled href='/#'>
-                  Get the Android App
-               </Button>
-            </Stack>
-         </Container>
-      </main>
+            <Button variant='outlined' disabled href='/#'>
+               Get the Android App
+            </Button>
+         </Stack>
+      </Container>
    );
 }
