@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
    );
 
    return (
-      <div className={roboto.className}>
+      <main className={roboto.className}>
          <Head>
             <meta
                name='viewport'
@@ -56,7 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
                </AuthProvider>
             </ThemeProvider>
          </CacheProvider>
-      </div>
+      </main>
    );
 }
 

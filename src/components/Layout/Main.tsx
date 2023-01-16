@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Toolbar } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import AppBar from 'components/Layout/components/AppBar';
 import BottomNavBar from 'components/Layout/components/BottomNavBar';
@@ -13,6 +13,7 @@ function MainLayout() {
             <Outlet />
          </Container>
 
+         <Toolbar />
          <BottomNavBar />
       </RequireAuth>
    );

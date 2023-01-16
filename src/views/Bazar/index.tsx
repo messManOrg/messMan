@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import { formateDate } from 'utils/formateDate';
+import { formatDate } from 'utils';
 import UserList from './components/UserList';
 
 function createData(user: string[], date: Date) {
@@ -40,7 +40,7 @@ const Bazar: React.FC = () => {
                         <UserList user={row.user} />
                      </TableCell>
                      <TableCell align='left' width={150}>
-                        {formateDate(row.date)}
+                        {formatDate(row.date)}
                      </TableCell>
                   </TableRow>
                ))}

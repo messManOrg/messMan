@@ -13,7 +13,7 @@ import { RoutePaths } from 'enums/routes';
 
 const TheAppBar: React.FC = () => {
    return (
-      <AppBar position='static'>
+      <AppBar position='sticky'>
          <Container maxWidth='md'>
             <Toolbar sx={{ px: 0 }} variant='dense'>
                <IconButton>

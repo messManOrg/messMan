@@ -7,11 +7,12 @@ import {
    NotificationsRounded,
    AccountCircleRounded,
 } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { RoutePaths } from 'enums/routes';
 
 const BottomNavBar = () => {
-   const [value, setValue] = useState(window.location.pathname);
+   const routes = useLocation().pathname.split('/');
+   const [value, setValue] = useState(() => routes[routes.length - 1]);
 
    function handleNavChange(event: unknown, newValue: string) {
       setValue(newValue);
@@ -20,12 +21,7 @@ const BottomNavBar = () => {
    return (
       <Paper
          elevation={2}
-         sx={{
-            position: 'fixed',
-            bottom: 0,
-            left: 0,
-            right: 0,
-         }}
+         sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
       >
          <BottomNavigation value={value} onChange={handleNavChange}>
             {navs.map(navItem => (

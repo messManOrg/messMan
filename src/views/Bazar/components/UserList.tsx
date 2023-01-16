@@ -1,20 +1,18 @@
-import {
-   Avatar,
-   Grid,
-   List,
-   ListItem,
-   ListItemAvatar,
-   ListItemButton,
-   ListItemText,
-} from '@mui/material';
+import { Grid, List, ListItem } from '@mui/material';
+import UserButton from 'components/UserButton';
 
 function UserList({ user }: { user: string[] }) {
    return (
       <List>
          <ListItem disablePadding>
-            <Grid container>
+            <Grid gap={1.5} container>
                {user.map(data => (
-                  <User key={data} name={data} />
+                  <UserButton
+                     avatar='/static/images/avatar.jpg'
+                     id={data}
+                     name={data}
+                     key={data}
+                  />
                ))}
             </Grid>
          </ListItem>
@@ -22,20 +20,4 @@ function UserList({ user }: { user: string[] }) {
    );
 }
 
-function User({ name }: { name: string }) {
-   return (
-      <Grid item>
-         <ListItemButton>
-            <ListItemAvatar>
-               <Avatar
-                  sx={{ width: 30, height: 30 }}
-                  alt={name}
-                  src={`/static/images/avatar.jpg`}
-               />
-            </ListItemAvatar>
-            <ListItemText primary={name} />
-         </ListItemButton>
-      </Grid>
-   );
-}
 export default UserList;
