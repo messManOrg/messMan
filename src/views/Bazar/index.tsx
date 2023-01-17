@@ -39,7 +39,6 @@ const Bazar: React.FC = () => {
                      <TableCell component='th' scope='row' align='left'>
                         <UserList user={row.user} />
                      </TableCell>
-
                      <TableCell align='left' width={150}>
                         {formatDate(row.date)}
                      </TableCell>

@@ -1,41 +1,23 @@
-import {
-   Avatar,
-   Grid,
-   List,
-   ListItem,
-   ListItemAvatar,
-   ListItemButton,
-   ListItemText,
-} from '@mui/material';
-import React from 'react';
+import { Grid, List, ListItem } from '@mui/material';
+import UserButton from 'components/UserButton';
 
-const User = ({ name }: { name: string }) => (
-   <Grid item>
-      <ListItemButton>
-         <ListItemAvatar>
-            <Avatar
-               sx={{ width: 30, height: 30 }}
-               alt={name}
-               src={`/static/images/avatar.jpg`}
-            />
-         </ListItemAvatar>
-         <ListItemText primary={name} />
-      </ListItemButton>
-   </Grid>
-);
-
-const UserList = ({ user }: { user: string[] }) => {
+function UserList({ user }: { user: string[] }) {
    return (
       <List>
          <ListItem disablePadding>
-            <Grid container>
+            <Grid gap={1.5} container>
                {user.map(data => (
-                  <User key={data} name={data} />
+                  <UserButton
+                     avatar='/static/images/avatar.jpg'
+                     id={data}
+                     name={data}
+                     key={data}
+                  />
                ))}
             </Grid>
          </ListItem>
       </List>
    );
-};
+}
 
 export default UserList;

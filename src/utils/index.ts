@@ -1,5 +1,3 @@
-import { format } from 'date-fns';
+import { formatDate, formatTime } from './formateDateTime';
 
-export function formatDate(date: Date) {
-   return format(date, 'dd MMM yyyy');
-}
+export { formatDate, formatTime };
