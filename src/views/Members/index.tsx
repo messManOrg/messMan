@@ -35,7 +35,7 @@ function Members() {
                               value === 2 && (
                                  <Chip
                                     color='primary'
-                                    label='manager'
+                                    label='Manager'
                                     variant='outlined'
                                     size='small'
                                  />

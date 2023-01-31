@@ -9,7 +9,7 @@ const Register: React.FC = () => {
    const location = useLocation();
    const auth = useAuthActions();
 
-   const from = location.state?.from?.pathname || '/app';
+   const from = location.state?.from?.pathname || '/mass';
 
    function handleLogin() {
       auth.signInWithEmail(() => {

@@ -8,11 +8,9 @@ function MainLayout() {
    return (
       <RequireAuth>
          <AppBar />
-
          <Container sx={{ py: 2 }} maxWidth='sm'>
             <Outlet />
          </Container>
-
          <Toolbar />
          <BottomNavBar />
       </RequireAuth>

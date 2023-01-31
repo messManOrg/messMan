@@ -10,7 +10,11 @@ import Members from 'views/Members';
 import Notices from 'views/Notices';
 import Profile from 'views/Profile';
 import Register from 'views/Register';
+import Base from 'views/Base';
 import { Suspense } from 'react';
+import OnBoardLayout from 'components/Layout/OnBoardLayout';
+import CreateMess from 'views/Base/CreateMess';
+import JoinMess from 'views/Base/JoinMess';
 
 export default function AppRoutes() {
    return (
@@ -22,6 +26,12 @@ export default function AppRoutes() {
             <Route path='notices' element={<Notices />} />
             <Route path='profile' element={<Profile />} />
             <Route path='members' element={<Members />} />
+         </Route>
+
+         <Route path='/mass' element={<OnBoardLayout />}>
+            <Route index element={<Base />} />
+            <Route path='create' element={<CreateMess />} />
+            <Route path='join' element={<JoinMess />} />
          </Route>
 
          <Route path='/' element={<AuthLayout />}>
