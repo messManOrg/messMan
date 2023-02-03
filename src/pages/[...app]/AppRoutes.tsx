@@ -10,11 +10,11 @@ import Members from 'views/Members';
 import Notices from 'views/Notices';
 import Profile from 'views/Profile';
 import Register from 'views/Register';
-import Base from 'views/Base';
+import OnBoard from 'views/OnBoard';
 import { Suspense } from 'react';
 import OnBoardLayout from 'components/Layout/OnBoardLayout';
-import CreateMess from 'views/Base/CreateMess';
-import JoinMess from 'views/Base/JoinMess';
+import CreateMess from 'views/OnBoard/CreateMess';
+import JoinMess from 'views/OnBoard/JoinMess';
 
 export default function AppRoutes() {
    return (
@@ -28,8 +28,8 @@ export default function AppRoutes() {
             <Route path='members' element={<Members />} />
          </Route>
 
-         <Route path='/mass' element={<OnBoardLayout />}>
-            <Route index element={<Base />} />
+         <Route path='/mess' element={<OnBoardLayout />}>
+            <Route index element={<OnBoard />} />
             <Route path='create' element={<CreateMess />} />
             <Route path='join' element={<JoinMess />} />
          </Route>

@@ -10,7 +10,7 @@ const Login: React.FC = () => {
    const location = useLocation();
    const auth = useAuthActions();
 
-   const from = location.state?.from?.pathname || '/mass';
+   const from = location.state?.from?.pathname || '/mess';
 
    function handleLogin() {
       auth.signInWithEmail(() => {

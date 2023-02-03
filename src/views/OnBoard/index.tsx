@@ -4,19 +4,19 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Box, Card, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-function Base() {
+function OnBoard() {
    const navigate = useNavigate();
    return (
       <Box>
          <CardContainer direction='row' spacing={2}>
             <Card
-               onClick={() => navigate('/mass/create')}
+               onClick={() => navigate('/mess/create')}
                sx={{ p: 5, cursor: 'pointer' }}
             >
                <AddIcon />
             </Card>
             <Card
-               onClick={() => navigate('/mass/join')}
+               onClick={() => navigate('/mess/join')}
                sx={{ p: 5, cursor: 'pointer' }}
             >
                <SearchIcon />
@@ -32,4 +32,4 @@ const CardContainer = styled(Stack)(() => ({
    height: '95vh',
 }));
 
-export default Base;
+export default OnBoard;
