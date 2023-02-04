@@ -10,13 +10,13 @@ function OnBoard() {
       <Box>
          <CardContainer direction='row' spacing={2}>
             <Card
-               onClick={() => navigate('/mess/create')}
+               onClick={() => navigate('/onboard/create')}
                sx={{ p: 5, cursor: 'pointer' }}
             >
                <AddIcon />
             </Card>
             <Card
-               onClick={() => navigate('/mess/join')}
+               onClick={() => navigate('/onboard/join')}
                sx={{ p: 5, cursor: 'pointer' }}
             >
                <SearchIcon />

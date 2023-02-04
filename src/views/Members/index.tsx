@@ -8,8 +8,11 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ActionButton from './components/ActionButton';
 import SearchUser from './components/SearchUser';
+import { useAuth } from 'store/auth/Provider';
 
 function Members() {
+   const auth = useAuth();
+   const manger = auth.role === 'manger';
    return (
       <Box>
          <SearchUser />
@@ -18,7 +21,7 @@ function Members() {
                return (
                   <ListItem
                      key={value}
-                     secondaryAction={<ActionButton />}
+                     secondaryAction={manger && <ActionButton />}
                      disablePadding
                   >
                      <ListItemButton>

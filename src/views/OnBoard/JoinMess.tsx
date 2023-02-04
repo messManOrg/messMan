@@ -11,7 +11,8 @@ import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuthActions } from 'store/auth/Provider';
 
 function JoinMess() {
    return (
@@ -38,6 +39,16 @@ function JoinMess() {
 
 function MessList() {
    const navigate = useNavigate();
+   const auth = useAuthActions();
+   const location = useLocation();
+   const from = location.state?.from?.pathname || '/app';
+
+   function handelJoinMess() {
+      auth.userRole(() => {
+         navigate(from, { replace: true });
+      }, 'member');
+   }
+
    return (
       <Card sx={{ display: 'flex' }}>
          <CardMedia
@@ -61,7 +72,7 @@ function MessList() {
                <Button
                   variant='contained'
                   size='small'
-                  onClick={() => navigate('/app')}
+                  onClick={handelJoinMess}
                >
                   <AddBusinessIcon /> Join
                </Button>

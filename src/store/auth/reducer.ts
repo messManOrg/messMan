@@ -1,7 +1,7 @@
 import { IAuthState } from './initialState';
 
 interface Action {
-   type: 'setUser' | 'createMess' | 'joinMess';
+   type: 'setUser' | 'createMess' | 'joinMess' | 'getUser';
    payload: IAuthState['currentUser'];
 }
 
@@ -21,6 +21,10 @@ function authReducer(state: IAuthState, action: Action): IAuthState {
          return {
             ...state,
             role: 'member',
+         };
+      case 'getUser':
+         return {
+            ...state,
          };
 
       default:

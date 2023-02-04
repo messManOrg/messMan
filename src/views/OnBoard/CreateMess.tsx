@@ -9,10 +9,19 @@ import {
    Stack,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuthActions } from 'store/auth/Provider';
 
 function CreateMess() {
    const navigate = useNavigate();
+   const auth = useAuthActions();
+   const location = useLocation();
+   const from = location.state?.from?.pathname || '/app';
+   function handelCreateMess() {
+      auth.userRole(() => {
+         navigate(from, { replace: true });
+      });
+   }
 
    return (
       <Stack spacing={2}>
@@ -65,13 +74,13 @@ function CreateMess() {
          <Box>
             <TextField fullWidth multiline rows={4} label='Description' />
          </Box>
-         <Button variant='contained' onClick={() => navigate('/app')} fullWidth>
+         <Button variant='contained' onClick={handelCreateMess} fullWidth>
             <AddIcon /> Create
          </Button>
          <Button
             variant='contained'
             color='secondary'
-            onClick={() => navigate('/mass')}
+            onClick={() => navigate('/onboard')}
             fullWidth
          >
             Back

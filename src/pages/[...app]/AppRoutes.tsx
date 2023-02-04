@@ -28,7 +28,7 @@ export default function AppRoutes() {
             <Route path='members' element={<Members />} />
          </Route>
 
-         <Route path='/mess' element={<OnBoardLayout />}>
+         <Route path='/onboard' element={<OnBoardLayout />}>
             <Route index element={<OnBoard />} />
             <Route path='create' element={<CreateMess />} />
             <Route path='join' element={<JoinMess />} />
