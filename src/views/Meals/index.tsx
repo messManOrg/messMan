@@ -10,7 +10,7 @@ import {
    Typography,
 } from '@mui/material';
 import UserButton from 'components/UserButton';
-import { DateRange, DayClickEventHandler, DayPicker } from 'react-day-picker';
+import { DateRange, DayPicker } from 'react-day-picker';
 import { eachDayOfInterval, isSameDay } from 'date-fns';
 import MealIndicator, { MealDay } from './components/MealIndicator';
 import 'react-day-picker/dist/style.css';
@@ -47,23 +47,21 @@ function Meals() {
       from: today,
    });
 
-   const selectedDays = React.useMemo(
-      () =>
-         eachDayOfInterval({
-            start: range?.from || today,
-            end: range?.to || today,
-         }),
-      [range?.to, range?.from]
-   );
+   const selectedDays = React.useMemo(() => {
+      if (!range) return [];
 
-   const handleDayClick: DayClickEventHandler = (day, modifiers) => {
-      // console.log('day', day);
-      // console.log('modifiers', modifiers);
+      const from = range.from || today;
+      const to = range.to || from;
 
-      if (modifiers.range_end) return;
+      if (isSameDay(from, to)) {
+         return [from]; // single day
+      }
 
-      if (isSameDay(range?.from, day)) return;
-   };
+      return eachDayOfInterval({
+         start: from,
+         end: to,
+      });
+   }, [range]);
 
    // TODO: these parts should move outside later
    const Head = () => (
@@ -121,7 +119,6 @@ function Meals() {
             max={7}
             selected={range}
             onSelect={setRange}
-            onDayClick={handleDayClick}
             fromDate={today}
          />
 
