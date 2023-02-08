@@ -15,6 +15,8 @@ import { Suspense } from 'react';
 import OnBoardLayout from 'components/Layout/OnBoardLayout';
 import CreateMess from 'views/OnBoard/CreateMess';
 import JoinMess from 'views/OnBoard/JoinMess';
+import Hostel from 'views/Hostel';
+import AddUser from 'views/Members/add-user';
 
 export default function AppRoutes() {
    return (
@@ -26,12 +28,14 @@ export default function AppRoutes() {
             <Route path='notices' element={<Notices />} />
             <Route path='profile' element={<Profile />} />
             <Route path='members' element={<Members />} />
+            <Route path='adduser' element={<AddUser />} />
          </Route>
 
          <Route path='/onboard' element={<OnBoardLayout />}>
             <Route index element={<OnBoard />} />
             <Route path='create' element={<CreateMess />} />
             <Route path='join' element={<JoinMess />} />
+            <Route path=':hostel' element={<Hostel />} />
          </Route>
 
          <Route path='/' element={<AuthLayout />}>

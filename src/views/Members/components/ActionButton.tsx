@@ -39,6 +39,7 @@ function ActionButton() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
          >
+            <MenuItem onClick={handleClose}>Add Balance</MenuItem>
             <MenuItem onClick={handleClose}>Promote to Manager</MenuItem>
             <MenuItem onClick={handleClose}>Remove this User</MenuItem>
          </Menu>

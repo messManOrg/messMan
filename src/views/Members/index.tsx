@@ -1,4 +1,4 @@
-import { Box, Chip } from '@mui/material';
+import { Box, Button, Chip } from '@mui/material';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import ActionButton from './components/ActionButton';
 import SearchUser from './components/SearchUser';
 import { useAuth } from 'store/auth/Provider';
+import { Link } from 'react-router-dom';
 
 function Members() {
    const auth = useAuth();
@@ -16,6 +17,14 @@ function Members() {
    return (
       <Box>
          <SearchUser />
+         {manger && (
+            <Link to='/app/adduser' style={{ textDecoration: 'none' }}>
+               <Button variant='contained' fullWidth sx={{ marginY: 2 }}>
+                  Add User
+               </Button>
+            </Link>
+         )}
+
          <List>
             {[0, 1, 2, 3, 4, 5, 6].map(value => {
                return (

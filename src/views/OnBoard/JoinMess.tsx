@@ -11,7 +11,7 @@ import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthActions } from 'store/auth/Provider';
 
 function JoinMess() {
@@ -53,29 +53,44 @@ function MessList() {
       <Card sx={{ display: 'flex' }}>
          <CardMedia
             component='img'
-            sx={{ width: 100 }}
+            sx={{ width: 100, height: 100 }}
             image='https://images.unsplash.com/photo-1661961110144-12ac85918e40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
             alt='Live from space album cover'
          />
-         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <CardContent sx={{ flex: '1 0 auto' }}>
+         <Box
+            sx={{
+               display: 'flex',
+               flexDirection: 'column',
+               width: '100%',
+            }}
+         >
+            <CardContent>
                <Typography component='div' variant='h6'>
-                  Mess Name
+                  <Link
+                     to='/onboard/mass'
+                     style={{ color: 'white', textDecoration: 'none' }}
+                  >
+                     Mess Name
+                  </Link>
                </Typography>
-               <Typography
-                  variant='subtitle1'
-                  color='text.secondary'
-                  component='div'
-               >
-                  location
-               </Typography>
-               <Button
-                  variant='contained'
-                  size='small'
-                  onClick={handelJoinMess}
-               >
-                  <AddBusinessIcon /> Join
-               </Button>
+
+               <Box display='flex' justifyContent='space-between'>
+                  <Typography
+                     variant='subtitle1'
+                     color='text.secondary'
+                     component='div'
+                  >
+                     location
+                  </Typography>
+                  <Button
+                     variant='contained'
+                     size='small'
+                     sx={{ padding: 0 }}
+                     onClick={handelJoinMess}
+                  >
+                     <AddBusinessIcon /> Join
+                  </Button>
+               </Box>
             </CardContent>
          </Box>
       </Card>
@@ -89,11 +104,11 @@ const Search = styled('div')(({ theme }) => ({
    '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
    },
-   marginRight: theme.spacing(2),
+   marginRight: theme.spacing(0),
    marginLeft: 0,
    width: '100%',
    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
+      marginLeft: theme.spacing(0),
       width: 'auto',
    },
 }));
