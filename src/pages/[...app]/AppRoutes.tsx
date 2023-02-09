@@ -18,6 +18,7 @@ import JoinMess from 'views/OnBoard/JoinMess';
 import Hostel from 'views/Hostel';
 import AddUser from 'views/Members/add-user';
 import AddBazar from 'views/Bazar/AddBazar';
+import AddNotice from 'views/Notices/AddNotice';
 
 export default function AppRoutes() {
    return (
@@ -28,6 +29,7 @@ export default function AppRoutes() {
             <Route path='add-bazar-list' element={<AddBazar />} />
             <Route path='meals' element={<Meals />} />
             <Route path='notices' element={<Notices />} />
+            <Route path='add-notice' element={<AddNotice />} />
             <Route path='profile' element={<Profile />} />
             <Route path='members' element={<Members />} />
             <Route path='adduser' element={<AddUser />} />
