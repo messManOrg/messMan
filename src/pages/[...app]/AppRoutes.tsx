@@ -17,6 +17,7 @@ import CreateMess from 'views/OnBoard/CreateMess';
 import JoinMess from 'views/OnBoard/JoinMess';
 import Hostel from 'views/Hostel';
 import AddUser from 'views/Members/add-user';
+import AddBazar from 'views/Bazar/AddBazar';
 
 export default function AppRoutes() {
    return (
@@ -24,6 +25,7 @@ export default function AppRoutes() {
          <Route path='/app' element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path='bazar' element={<Bazar />} />
+            <Route path='add-bazar-list' element={<AddBazar />} />
             <Route path='meals' element={<Meals />} />
             <Route path='notices' element={<Notices />} />
             <Route path='profile' element={<Profile />} />
