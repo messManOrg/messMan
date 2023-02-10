@@ -1,11 +1,14 @@
-import { Box, Button, Chip } from '@mui/material';
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
+import {
+   Box,
+   Button,
+   Chip,
+   List,
+   ListItem,
+   ListItemButton,
+   ListItemText,
+   ListItemAvatar,
+   Avatar,
+} from '@mui/material';
 import ActionButton from './components/ActionButton';
 import SearchUser from './components/SearchUser';
 import { useAuth } from 'store/auth/Provider';
@@ -18,7 +21,7 @@ function Members() {
       <Box>
          <SearchUser />
          {manger && (
-            <Link to='/app/adduser' style={{ textDecoration: 'none' }}>
+            <Link to='/app/add-user' style={{ textDecoration: 'none' }}>
                <Button variant='contained' fullWidth sx={{ marginY: 2 }}>
                   Add User
                </Button>
