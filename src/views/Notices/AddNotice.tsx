@@ -5,14 +5,14 @@ import Wrapper from 'components/Wrapper';
 interface IAddNotice {
    title: string;
    description: string;
-   priority: 'first' | 'second' | 'third';
+   priority: 'high' | 'normal' | 'low';
 }
 
 function AddNotice() {
    const [data, setData] = useState<IAddNotice>({
       title: '',
       description: '',
-      priority: 'first',
+      priority: 'high',
    });
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
@@ -61,9 +61,9 @@ function AddNotice() {
                   select
                   fullWidth
                >
-                  <MenuItem value='first'>First</MenuItem>
-                  <MenuItem value='second'>Second</MenuItem>
-                  <MenuItem value='third'>Third</MenuItem>
+                  <MenuItem value='high'>High</MenuItem>
+                  <MenuItem value='normal'>Normal</MenuItem>
+                  <MenuItem value='low'>Low</MenuItem>
                </TextField>
             </Box>
 

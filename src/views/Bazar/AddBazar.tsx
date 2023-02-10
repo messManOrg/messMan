@@ -16,6 +16,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import Image from 'next/image';
+
 import Wrapper from 'components/Wrapper';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;
