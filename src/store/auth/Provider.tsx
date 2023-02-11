@@ -28,8 +28,8 @@ const AuthProvider: React.FC<React.PropsWithChildren> = props => {
    // }
 
    const user = {
-      displayName: 'Somebody',
-      phoneNumber: '00000000',
+      displayName: 'Some Body',
+      phoneNumber: '01300000',
    };
 
    function signInWithEmail(callback: VoidFunction) {

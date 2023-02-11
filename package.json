@@ -11,7 +11,8 @@
       "prepare": "npx is-ci || husky install",
       "preci": "rm -rf node_modules",
       "ci": "yarn install --frozen-lockfile",
-      "format": "prettier --write ./src"
+      "format": "prettier --write ./src",
+      "clean": "rm -rfv .next/"
    },
    "lint-staged": {
       "*.{ts,tsx}": "yarn test --watchAll=false --findRelatedTests",

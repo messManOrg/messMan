@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+   Paper,
    Table,
    TableBody,
    TableCell,
@@ -10,11 +11,12 @@ import {
    Typography,
 } from '@mui/material';
 import UserButton from 'components/UserButton';
-import { DateRange, DayPicker } from 'react-day-picker';
+import { DateRange } from 'react-day-picker';
 import { eachDayOfInterval, isSameDay } from 'date-fns';
 import MealIndicator, { MealDay } from './components/MealIndicator';
 import 'react-day-picker/dist/style.css';
 import { RootStyle } from './styles';
+import DayPickerStyled from 'components/DayPickerStyled';
 
 function createData(name: string, meals: number[]) {
    return { name, meals };
@@ -114,13 +116,14 @@ function Meals() {
 
    return (
       <RootStyle>
-         <DayPicker
-            mode='range'
-            max={7}
-            selected={range}
-            onSelect={setRange}
-            fromDate={today}
-         />
+         <Paper>
+            <DayPickerStyled
+               mode='range'
+               max={7}
+               selected={range}
+               onSelect={setRange}
+            />
+         </Paper>
 
          <TableContainer>
             <Table stickyHeader>
