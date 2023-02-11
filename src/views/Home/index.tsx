@@ -15,11 +15,16 @@ const Home = () => {
                <Typography variant='button'>Mess Borders</Typography>
             </CardLinkWithCaption>
 
-            <CardLinkWithCaption sx={{ flex: 1 }} path='members'>
-               <Typography variant='button'>Something Else</Typography>
+            <CardLinkWithCaption sx={{ flex: 1 }} path='specific-cost'>
+               <Typography variant='button'>Specific Cost</Typography>
             </CardLinkWithCaption>
          </Stack>
-
+         <CardLinkWithCaption
+            sx={{ flex: 1, textAlign: 'center' }}
+            path='all-cost'
+         >
+            <Typography variant='button'>All Cost</Typography>
+         </CardLinkWithCaption>
          <RatingCard />
       </Stack>
    );

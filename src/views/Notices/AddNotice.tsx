@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, TextField, Button, MenuItem } from '@mui/material';
-import Wrapper from 'components/Wrapper';
+import DialogWrapper from 'components/DialogWrapper';
 
 interface IAddNotice {
    title: string;
@@ -23,7 +23,7 @@ function AddNotice() {
       event.preventDefault();
    };
    return (
-      <Wrapper>
+      <DialogWrapper>
          <form onSubmit={handelSubmit}>
             <Typography variant='h5' gutterBottom align='left'>
                Add Notice
@@ -71,7 +71,7 @@ function AddNotice() {
                Add
             </Button>
          </form>
-      </Wrapper>
+      </DialogWrapper>
    );
 }
 
