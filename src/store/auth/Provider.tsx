@@ -10,10 +10,13 @@ interface AuthContextType {
    signInWithGoogle: (callback: VoidFunction) => void;
    // eslint-disable-next-line no-unused-vars
    signOut: (callback: VoidFunction) => void;
+   // eslint-disable-next-line no-unused-vars
+   userRole: (callback: VoidFunction, member?: string) => void;
 }
 
 const AuthContext = React.createContext<{
    currentUser: IAuthState['currentUser'];
+   role: IAuthState['role'];
 }>(null!);
 
 const AuthActionContext = React.createContext({} as AuthContextType);
@@ -55,11 +58,27 @@ const AuthProvider: React.FC<React.PropsWithChildren> = props => {
       });
       callback();
    }
+   function userRole(callback: VoidFunction, member?: string) {
+      {
+         member
+            ? dispatch({
+                 type: 'joinMess',
+                 payload: user,
+              })
+            : dispatch({
+                 type: 'createMess',
+                 payload: user,
+              });
+      }
+
+      callback();
+   }
 
    const actions = {
       signInWithEmail,
       signInWithGoogle,
       signOut,
+      userRole,
    };
 
    return (

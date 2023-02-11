@@ -10,7 +10,15 @@ import Members from 'views/Members';
 import Notices from 'views/Notices';
 import Profile from 'views/Profile';
 import Register from 'views/Register';
+import OnBoard from 'views/OnBoard';
 import { Suspense } from 'react';
+import OnBoardLayout from 'components/Layout/OnBoardLayout';
+import CreateMess from 'views/OnBoard/CreateMess';
+import JoinMess from 'views/OnBoard/JoinMess';
+import Hostel from 'views/Hostel';
+import AddUser from 'views/Members/addUser';
+import AddBazar from 'views/Bazar/AddBazar';
+import AddNotice from 'views/Notices/AddNotice';
 
 export default function AppRoutes() {
    return (
@@ -18,10 +26,20 @@ export default function AppRoutes() {
          <Route path='/app' element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path='bazar' element={<Bazar />} />
+            <Route path='add-bazar-list' element={<AddBazar />} />
             <Route path='meals' element={<Meals />} />
             <Route path='notices' element={<Notices />} />
+            <Route path='add-notice' element={<AddNotice />} />
             <Route path='profile' element={<Profile />} />
             <Route path='members' element={<Members />} />
+            <Route path='add-user' element={<AddUser />} />
+         </Route>
+
+         <Route path='/onboard' element={<OnBoardLayout />}>
+            <Route index element={<OnBoard />} />
+            <Route path='create' element={<CreateMess />} />
+            <Route path='join' element={<JoinMess />} />
+            <Route path=':hostel' element={<Hostel />} />
          </Route>
 
          <Route path='/' element={<AuthLayout />}>

@@ -1,24 +1,39 @@
-import { Box, Chip } from '@mui/material';
-
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
+import {
+   Box,
+   Button,
+   Chip,
+   List,
+   ListItem,
+   ListItemButton,
+   ListItemText,
+   ListItemAvatar,
+   Avatar,
+} from '@mui/material';
 import ActionButton from './components/ActionButton';
 import SearchUser from './components/SearchUser';
+import { useAuth } from 'store/auth/Provider';
+import { Link } from 'react-router-dom';
 
 function Members() {
+   const auth = useAuth();
+   const manger = auth.role === 'manger';
    return (
       <Box>
          <SearchUser />
+         {manger && (
+            <Link to='/app/add-user' style={{ textDecoration: 'none' }}>
+               <Button variant='contained' fullWidth sx={{ marginY: 2 }}>
+                  Add User
+               </Button>
+            </Link>
+         )}
+
          <List>
             {[0, 1, 2, 3, 4, 5, 6].map(value => {
                return (
                   <ListItem
                      key={value}
-                     secondaryAction={<ActionButton />}
+                     secondaryAction={manger && <ActionButton />}
                      disablePadding
                   >
                      <ListItemButton>
@@ -35,7 +50,7 @@ function Members() {
                               value === 2 && (
                                  <Chip
                                     color='primary'
-                                    label='manager'
+                                    label='Manager'
                                     variant='outlined'
                                     size='small'
                                  />
