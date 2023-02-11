@@ -19,12 +19,16 @@ import Hostel from 'views/Hostel';
 import AddUser from 'views/Members/addUser';
 import AddBazar from 'views/Bazar/AddBazar';
 import AddNotice from 'views/Notices/AddNotice';
+import SpecificUserCost from 'views/Cost/SpecificUserCost';
+import AllUserCost from 'views/Cost/AllUserCost';
 
 export default function AppRoutes() {
    return (
       <Routes>
          <Route path='/app' element={<MainLayout />}>
             <Route index element={<Home />} />
+            <Route path='specific-cost' element={<SpecificUserCost />} />
+            <Route path='all-cost' element={<AllUserCost />} />
             <Route path='bazar' element={<Bazar />} />
             <Route path='add-bazar-list' element={<AddBazar />} />
             <Route path='meals' element={<Meals />} />

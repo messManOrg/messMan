@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Box, Card, Container } from '@mui/material';
 import React from 'react';
 
-function Wrapper({ children }: { children: React.ReactNode }) {
+function DialogWrapper({ children }: { children: React.ReactNode }) {
    return (
       <CardContainer>
          <Container maxWidth='sm'>
@@ -25,4 +25,4 @@ const CardContainer = styled(Box)({
    justifyContent: 'center',
    height: '80vh',
 });
-export default Wrapper;
+export default DialogWrapper;

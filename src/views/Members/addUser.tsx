@@ -1,5 +1,5 @@
 import { Box, Typography, TextField, Button } from '@mui/material';
-import Wrapper from 'components/Wrapper';
+import DialogWrapper from 'components/DialogWrapper';
 import { useState } from 'react';
 
 function AddUser() {
@@ -17,7 +17,7 @@ function AddUser() {
       event.preventDefault();
    };
    return (
-      <Wrapper>
+      <DialogWrapper>
          <form onSubmit={handelSubmit}>
             <Typography variant='h5' gutterBottom align='left'>
                Add Member
@@ -59,7 +59,7 @@ function AddUser() {
                Add
             </Button>
          </form>
-      </Wrapper>
+      </DialogWrapper>
    );
 }
 
