@@ -2,8 +2,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Avatar, Card, CardContent, Stack, Typography } from '@mui/material';
 import { RoutePaths } from 'enums/routes';
 import { useAuth, useAuthActions } from 'store/auth/Provider';
-import MealStatusButton from './components/MealStatusButton';
-import GuestMealStatusButton from './components/GuestMealStatusButton';
+import MainMeal from './components/MainMeal';
+import GuestMeal from './components/GuestMeal';
 import LogoutButton from './components/LogoutButton';
 
 const Profile: React.FC = () => {
@@ -27,7 +27,7 @@ const Profile: React.FC = () => {
          <Card>
             <CardContent>
                <Stack paddingY={1} alignItems='center' spacing={1}>
-                  <Avatar sx={{ width: 56, height: 56 }}>
+                  <Avatar sx={{ width: 100, height: 100 }}>
                      {currentUser?.displayName?.charAt(0)}
                   </Avatar>
 
@@ -46,8 +46,8 @@ const Profile: React.FC = () => {
             </CardContent>
          </Card>
 
-         <MealStatusButton />
-         <GuestMealStatusButton />
+         <MainMeal />
+         <GuestMeal />
 
          <LogoutButton onClick={handleLogout} />
       </Stack>
