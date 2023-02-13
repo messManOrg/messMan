@@ -1,6 +1,8 @@
+import { lazy, useReducer } from 'react';
 import {
    AppBar,
    Avatar,
+   ButtonBase,
    Chip,
    Container,
    IconButton,
@@ -10,8 +12,16 @@ import {
 import { Link } from 'react-router-dom';
 import config from 'config';
 import { RoutePaths } from 'enums/routes';
+import BottomSheet from 'components/BottomSheet';
+
+const BalanceSheet = lazy(() => import('./BalanceSheet'));
 
 const TheAppBar: React.FC = () => {
+   const [balanceSheet, toggleBalanceSheet] = useReducer(
+      state => !state,
+      false
+   );
+
    return (
       <AppBar position='sticky'>
          <Container maxWidth='md'>
@@ -31,6 +41,8 @@ const TheAppBar: React.FC = () => {
                </Typography>
 
                <Chip
+                  component={ButtonBase}
+                  onClick={toggleBalanceSheet}
                   sx={{
                      ml: 'auto',
                      fontWeight: 'bold',
@@ -40,6 +52,10 @@ const TheAppBar: React.FC = () => {
                   label='$100'
                   color='warning'
                />
+
+               <BottomSheet open={balanceSheet} onClose={toggleBalanceSheet}>
+                  <BalanceSheet />
+               </BottomSheet>
             </Toolbar>
          </Container>
       </AppBar>
