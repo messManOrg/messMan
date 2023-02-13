@@ -1,32 +1,39 @@
 import {
-   Box,
    Card,
    CardActionArea,
    CardContent,
+   CardHeader,
+   CardHeaderProps,
    CardProps,
-   Typography,
+   Stack,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, LinkProps } from 'react-router-dom';
 
 interface Props extends CardProps {
+   to: LinkProps['to'];
    caption?: string;
-   path: string;
+   avatar?: CardHeaderProps['avatar'];
+   icon?: any;
 }
 
 const CardLinkWithCaption: React.FC<Props> = props => {
-   const { caption, path, children, ...cardProps } = props;
+   const { caption, avatar, to, icon, children, ...cardProps } = props;
 
    return (
       <Card {...cardProps}>
-         <CardActionArea component={Link} to={path}>
-            <CardContent>
-               {caption && (
-                  <Box paddingBottom={1.8}>
-                     <Typography variant='caption'>{caption}</Typography>
-                  </Box>
-               )}
+         <CardActionArea component={Link} to={to}>
+            {caption && <CardHeader title={caption} avatar={avatar} />}
 
-               {children}
+            <CardContent>
+               <Stack
+                  direction='row'
+                  gap={2}
+                  justifyContent='center'
+                  alignItems='center'
+               >
+                  {icon && icon}
+                  {children}
+               </Stack>
             </CardContent>
          </CardActionArea>
       </Card>

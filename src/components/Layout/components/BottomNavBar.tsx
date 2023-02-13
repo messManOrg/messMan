@@ -4,7 +4,6 @@ import {
    HomeRounded,
    FastfoodRounded,
    ShoppingBasketRounded,
-   NotificationsRounded,
    AccountCircleRounded,
 } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
@@ -23,7 +22,7 @@ const BottomNavBar = () => {
          elevation={2}
          sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
       >
-         <BottomNavigation value={value} onChange={handleNavChange}>
+         <BottomNavigation showLabels value={value} onChange={handleNavChange}>
             {navs.map(navItem => (
                <BottomNavigationAction
                   key={navItem.value}
@@ -54,11 +53,6 @@ const navs = [
       value: RoutePaths.Meals,
       label: 'Meals',
       icon: <FastfoodRounded />,
-   },
-   {
-      value: RoutePaths.Notices,
-      label: 'Notices',
-      icon: <NotificationsRounded />,
    },
    {
       value: RoutePaths.Profile,
