@@ -22,7 +22,13 @@ const CardLinkWithCaption: React.FC<Props> = props => {
    return (
       <Card {...cardProps}>
          <CardActionArea component={Link} to={to}>
-            {caption && <CardHeader title={caption} avatar={avatar} />}
+            {caption && (
+               <CardHeader
+                  title={caption}
+                  avatar={avatar}
+                  sx={{ marginBottom: -2 }}
+               />
+            )}
 
             <CardContent>
                <Stack

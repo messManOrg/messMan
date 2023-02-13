@@ -1,13 +1,15 @@
 import { Stack, Typography } from '@mui/material';
+import { People } from '@mui/icons-material';
 import CardLinkWithCaption from 'components/CardLinkWithCaption';
 import LatestNotice from './components/LatestNotice';
 import RatingCard from './components/RatingCard';
 import AppFeedback from './components/AppFeedback';
-import { People } from '@mui/icons-material';
+import PhotoGallery from './components/PhotoGallery';
 
 export default function Home() {
    return (
       <Stack spacing={1.5}>
+         <PhotoGallery />
          <LatestNotice />
 
          <CardLinkWithCaption
