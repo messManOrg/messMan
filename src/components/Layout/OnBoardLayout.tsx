@@ -1,5 +1,5 @@
-import { Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
+import { Container } from '@mui/material';
 import RequireAuth from 'components/RequireAuth';
 
 function OnBoardLayout() {

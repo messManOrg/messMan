@@ -1,10 +1,10 @@
+import { useMemo } from 'react';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
-import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
-import { useMemo } from 'react';
 import AuthProvider from 'store/auth/Provider';
-import Head from 'next/head';
 import { getTheme } from 'theme';
 
 const serviceWorkerRegistration = () => import('serviceWorkerRegistration');

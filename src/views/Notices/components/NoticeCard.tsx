@@ -1,10 +1,10 @@
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
 import { Box, Stack } from '@mui/material';
-import { formatDate, formatTime } from 'utils';
+import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemText from '@mui/material/ListItemText';
+import Typography from '@mui/material/Typography';
+import { formatDate, formatTime } from 'utils';
 
 function NoticeCard() {
    return (

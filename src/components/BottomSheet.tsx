@@ -1,13 +1,13 @@
+import { Suspense } from 'react';
 import {
    CircularProgress,
    SwipeableDrawer,
    SwipeableDrawerProps,
    Typography,
 } from '@mui/material';
-import { Suspense } from 'react';
 
 // onClose is a toggler, onOpen = onClose
-interface Props extends Omit<SwipeableDrawerProps, 'onOpen'> {}
+type Props = Omit<SwipeableDrawerProps, 'onOpen'>;
 
 export default function BottomSheet(props: Props) {
    return (

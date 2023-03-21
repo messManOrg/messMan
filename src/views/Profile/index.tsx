@@ -2,9 +2,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Avatar, Card, CardContent, Stack, Typography } from '@mui/material';
 import { RoutePaths } from 'enums/routes';
 import { useAuth, useAuthActions } from 'store/auth/Provider';
-import MainMeal from './components/MainMeal';
 import GuestMeal from './components/GuestMeal';
 import LogoutButton from './components/LogoutButton';
+import MainMeal from './components/MainMeal';
 
 const Profile: React.FC = () => {
    const { currentUser } = useAuth();

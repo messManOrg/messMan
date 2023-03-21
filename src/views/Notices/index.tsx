@@ -1,10 +1,9 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-
-import Divider from '@mui/material/Divider';
-import NoticeCard from './components/NoticeCard';
-import AddButton from './components/AddButton';
 import { Link } from 'react-router-dom';
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
+import AddButton from './components/AddButton';
+import NoticeCard from './components/NoticeCard';
 
 function Notices() {
    return (

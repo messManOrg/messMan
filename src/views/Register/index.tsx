@@ -1,8 +1,8 @@
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Button, Typography, Box, TextField } from '@mui/material';
-import { useAuthActions } from 'store/auth/Provider';
-import { RoutePaths } from 'enums/routes';
 import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
+import { RoutePaths } from 'enums/routes';
+import { useAuthActions } from 'store/auth/Provider';
 
 const Register: React.FC = () => {
    const navigate = useNavigate();

@@ -1,4 +1,6 @@
 import React from 'react';
+import { DateRange } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
 import {
    Paper,
    Table,
@@ -10,13 +12,11 @@ import {
    TableRow,
    Typography,
 } from '@mui/material';
+import DayPickerStyled from 'components/DayPickerStyled';
 import UserButton from 'components/UserButton';
-import { DateRange } from 'react-day-picker';
 import { eachDayOfInterval, isSameDay } from 'date-fns';
 import MealIndicator, { MealDay } from './components/MealIndicator';
-import 'react-day-picker/dist/style.css';
 import { RootStyle } from './styles';
-import DayPickerStyled from 'components/DayPickerStyled';
 
 function createData(name: string, meals: number[]) {
    return { name, meals };

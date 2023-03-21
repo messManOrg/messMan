@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Avatar, Stack, Typography } from '@mui/material';
 import MuiLink from '@mui/material/Link';
-import { Link } from 'react-router-dom';
 
 export interface User {
    id: string;

@@ -1,5 +1,5 @@
-import { Button, Container, Stack } from '@mui/material';
 import Link from 'next/link';
+import { Button, Container, Stack } from '@mui/material';
 
 export default function LandingPage() {
    return (

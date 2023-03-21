@@ -1,5 +1,5 @@
-import { Box, Card, Container, styled } from '@mui/material';
 import { Outlet } from 'react-router-dom';
+import { Box, Card, Container, styled } from '@mui/material';
 
 function AuthLayout() {
    return (

@@ -1,6 +1,6 @@
-import { Button } from '@mui/material';
-import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import GoogleIcon from '@mui/icons-material/Google';
+import { Button } from '@mui/material';
 
 interface LoginButton {
    handleLogin: () => void;

@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
 import {
    HomeRounded,
    FastfoodRounded,
    ShoppingBasketRounded,
    AccountCircleRounded,
 } from '@mui/icons-material';
-import { Link, useLocation } from 'react-router-dom';
+import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
 import { RoutePaths } from 'enums/routes';
 
 const BottomNavBar = () => {

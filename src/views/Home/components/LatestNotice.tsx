@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import { ArrowForward, NotificationsRounded } from '@mui/icons-material';
 import { Button, Stack, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
 import CardLinkWithCaption from 'components/CardLinkWithCaption';
 import { RoutePaths } from 'enums/routes';
 

@@ -1,3 +1,7 @@
+import React from 'react';
+import Image from 'next/image';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import {
    Box,
    Typography,
@@ -6,13 +10,7 @@ import {
    Stack,
    Checkbox,
 } from '@mui/material';
-import React from 'react';
-
 import Autocomplete from '@mui/material/Autocomplete';
-import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import Image from 'next/image';
-
 import DialogWrapper from 'components/DialogWrapper';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize='small' />;

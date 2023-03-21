@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import {
    Avatar,
    Button,
@@ -15,9 +16,8 @@ import {
    ListItemText,
    Chip,
 } from '@mui/material';
-import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+import Box from '@mui/material/Box';
 import { useAuthActions } from 'store/auth/Provider';
-import { useNavigate } from 'react-router-dom';
 import { formatDate } from 'utils';
 
 function Hostel() {

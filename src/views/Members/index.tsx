@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
    Box,
    Button,
@@ -9,10 +10,9 @@ import {
    ListItemAvatar,
    Avatar,
 } from '@mui/material';
+import { useAuth } from 'store/auth/Provider';
 import ActionButton from './components/ActionButton';
 import SearchUser from './components/SearchUser';
-import { useAuth } from 'store/auth/Provider';
-import { Link } from 'react-router-dom';
 
 function Members() {
    const auth = useAuth();

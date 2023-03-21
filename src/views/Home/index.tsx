@@ -1,10 +1,10 @@
-import { Stack, Typography } from '@mui/material';
 import { People } from '@mui/icons-material';
+import { Stack, Typography } from '@mui/material';
 import CardLinkWithCaption from 'components/CardLinkWithCaption';
-import LatestNotice from './components/LatestNotice';
-import RatingCard from './components/RatingCard';
 import AppFeedback from './components/AppFeedback';
+import LatestNotice from './components/LatestNotice';
 import PhotoGallery from './components/PhotoGallery';
+import RatingCard from './components/RatingCard';
 
 export default function Home() {
    return (

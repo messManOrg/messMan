@@ -1,26 +1,26 @@
+import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AuthLayout from 'components/Layout/Auth';
 import MainLayout from 'components/Layout/Main';
+import OnBoardLayout from 'components/Layout/OnBoardLayout';
 import Bazar from 'views/Bazar';
+import AddBazar from 'views/Bazar/AddBazar';
+import AllUserCost from 'views/Cost/AllUserCost';
+import SpecificUserCost from 'views/Cost/SpecificUserCost';
 import { ForgetPassword } from 'views/ForgetPassword';
 import Home from 'views/Home';
+import Hostel from 'views/Hostel';
 import Login from 'views/Login';
 import Meals from 'views/Meals';
 import Members from 'views/Members';
+import AddUser from 'views/Members/addUser';
 import Notices from 'views/Notices';
-import Profile from 'views/Profile';
-import Register from 'views/Register';
+import AddNotice from 'views/Notices/AddNotice';
 import OnBoard from 'views/OnBoard';
-import { Suspense } from 'react';
-import OnBoardLayout from 'components/Layout/OnBoardLayout';
 import CreateMess from 'views/OnBoard/CreateMess';
 import JoinMess from 'views/OnBoard/JoinMess';
-import Hostel from 'views/Hostel';
-import AddUser from 'views/Members/addUser';
-import AddBazar from 'views/Bazar/AddBazar';
-import AddNotice from 'views/Notices/AddNotice';
-import SpecificUserCost from 'views/Cost/SpecificUserCost';
-import AllUserCost from 'views/Cost/AllUserCost';
+import Profile from 'views/Profile';
+import Register from 'views/Register';
 
 export default function AppRoutes() {
    return (

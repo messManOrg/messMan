@@ -1,8 +1,8 @@
-import Rating from '@mui/material/Rating';
-import Box from '@mui/material/Box';
-import { Card, CardContent, CardHeader, Stack } from '@mui/material';
 import { useState } from 'react';
 import { Reviews, Star } from '@mui/icons-material';
+import { Card, CardContent, CardHeader, Stack } from '@mui/material';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 
 const labels: { [index: string]: string } = {
    1: 'Worst',

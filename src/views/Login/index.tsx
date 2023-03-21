@@ -1,9 +1,9 @@
-import { Button, Typography, Box, TextField } from '@mui/material';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { useAuthActions } from 'store/auth/Provider';
-import { RoutePaths } from 'enums/routes';
-import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
 import Head from 'next/head';
+import { Button, Typography, Box, TextField } from '@mui/material';
+import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
+import { RoutePaths } from 'enums/routes';
+import { useAuthActions } from 'store/auth/Provider';
 
 const Login: React.FC = () => {
    const navigate = useNavigate();

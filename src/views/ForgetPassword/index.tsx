@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Button, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { Link } from 'react-router-dom';
 import { RoutePaths } from 'enums/routes';
 
 export const ForgetPassword = () => {

@@ -1,4 +1,5 @@
 import { lazy, useReducer } from 'react';
+import { Link } from 'react-router-dom';
 import {
    AppBar,
    Avatar,
@@ -9,10 +10,9 @@ import {
    Toolbar,
    Typography,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import BottomSheet from 'components/BottomSheet';
 import config from 'config';
 import { RoutePaths } from 'enums/routes';
-import BottomSheet from 'components/BottomSheet';
 
 const BalanceSheet = lazy(() => import('./BalanceSheet'));
 

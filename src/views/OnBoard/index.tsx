@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, Card, Stack, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import styled from '@emotion/styled';
 
 function OnBoard() {
    const navigate = useNavigate();

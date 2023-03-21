@@ -1,3 +1,6 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+import SearchIcon from '@mui/icons-material/Search';
 import {
    Box,
    Button,
@@ -7,11 +10,8 @@ import {
    Stack,
    Typography,
 } from '@mui/material';
-import AddBusinessIcon from '@mui/icons-material/AddBusiness';
-import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { styled, alpha } from '@mui/material/styles';
 import { useAuthActions } from 'store/auth/Provider';
 
 function JoinMess() {

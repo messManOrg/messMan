@@ -1,7 +1,7 @@
+import { useState } from 'react';
 import { Collapse, Paper } from '@mui/material';
 import DayPickerStyled from 'components/DayPickerStyled';
 import SwitchButton from 'components/SwitchButton';
-import { useState } from 'react';
 import { useMealDispatch, useMealState } from 'store/meal/Provider';
 
 const GuestMeal: React.FC = () => {

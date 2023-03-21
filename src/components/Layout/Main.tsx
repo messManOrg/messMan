@@ -1,10 +1,10 @@
-import { Container, Toolbar } from '@mui/material';
 import { Navigate, Outlet } from 'react-router-dom';
+import { Container, Toolbar } from '@mui/material';
 import AppBar from 'components/Layout/components/AppBar';
 import BottomNavBar from 'components/Layout/components/BottomNavBar';
 import RequireAuth from 'components/RequireAuth';
-import { useAuth } from 'store/auth/Provider';
 import { RoutePaths } from 'enums/routes';
+import { useAuth } from 'store/auth/Provider';
 
 function MainLayout() {
    const auth = useAuth();

@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
 import DialogWrapper from 'components/DialogWrapper';
-import { useState } from 'react';
 
 function AddUser() {
    const [data, setData] = useState({
