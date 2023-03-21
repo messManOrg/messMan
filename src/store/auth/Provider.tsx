@@ -1,6 +1,7 @@
 import React from 'react';
 import initialState, { IAuthState } from './initialState';
 import authReducer from './reducer';
+
 // import OverlayLoading from 'components/OverlayLoading';
 
 interface AuthContextType {
@@ -14,10 +15,12 @@ interface AuthContextType {
    userRole: (callback: VoidFunction, member?: string) => void;
 }
 
-const AuthContext = React.createContext<{
+type TAuth = {
    currentUser: IAuthState['currentUser'];
    role: IAuthState['role'];
-}>(null!);
+};
+
+const AuthContext = React.createContext({} as TAuth);
 
 const AuthActionContext = React.createContext({} as AuthContextType);
 

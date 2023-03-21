@@ -1,3 +1,4 @@
+import { Link, LinkProps } from 'react-router-dom';
 import {
    Card,
    CardActionArea,
@@ -7,13 +8,12 @@ import {
    CardProps,
    Stack,
 } from '@mui/material';
-import { Link, LinkProps } from 'react-router-dom';
 
 interface Props extends CardProps {
    to: LinkProps['to'];
    caption?: string;
    avatar?: CardHeaderProps['avatar'];
-   icon?: any;
+   icon?: unknown;
 }
 
 const CardLinkWithCaption: React.FC<Props> = props => {
@@ -37,8 +37,10 @@ const CardLinkWithCaption: React.FC<Props> = props => {
                   justifyContent='center'
                   alignItems='center'
                >
-                  {icon && icon}
-                  {children}
+                  <>
+                     {icon && icon}
+                     {children}
+                  </>
                </Stack>
             </CardContent>
          </CardActionArea>

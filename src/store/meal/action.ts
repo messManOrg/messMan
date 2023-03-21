@@ -8,5 +8,5 @@ type MealActionTypes =
 
 export interface IMealAction {
    type: MealActionTypes;
-   payload?: any;
+   payload?: unknown;
 }

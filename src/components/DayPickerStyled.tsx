@@ -1,5 +1,5 @@
-import { Paper, styled, SxProps } from '@mui/material';
 import { DayPicker, DayPickerProps } from 'react-day-picker';
+import { styled, SxProps } from '@mui/material';
 
 type Props = DayPickerProps & {
    sx?: SxProps;
