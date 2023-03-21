@@ -1,39 +1,20 @@
 import type { AppProps } from 'next/app';
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
-import {
-   createTheme,
-   CssBaseline,
-   ThemeProvider,
-   useMediaQuery,
-} from '@mui/material';
+import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import { useMemo } from 'react';
-import { Roboto } from '@next/font/google';
 import AuthProvider from 'store/auth/Provider';
 import Head from 'next/head';
+import { getTheme } from 'theme';
 
 const serviceWorkerRegistration = () => import('serviceWorkerRegistration');
 
-const roboto = Roboto({
-   subsets: ['latin'],
-   weight: ['100', '300', '400', '500', '700'],
-});
-
 export default function App({ Component, pageProps }: AppProps) {
    const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-
-   const theme = useMemo(
-      () =>
-         createTheme({
-            palette: {
-               mode: isDarkMode ? 'dark' : 'light',
-            },
-         }),
-      [isDarkMode]
-   );
+   const theme = useMemo(() => getTheme(isDarkMode), [isDarkMode]);
 
    return (
-      <main className={roboto.className}>
+      <main>
          <Head>
             <meta
                name='viewport'
