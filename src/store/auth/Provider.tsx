@@ -1,92 +1,63 @@
-import React from 'react';
-import initialState, { IAuthState } from './initialState';
-import authReducer from './reducer';
-
-// import OverlayLoading from 'components/OverlayLoading';
+import React, { useEffect } from 'react';
+import { mutate } from 'swr';
+import initialState, { IAuthState, User } from './initialState';
+import authReducer, { Action } from './reducer';
 
 interface AuthContextType {
-   // eslint-disable-next-line no-unused-vars
-   signInWithEmail: (callback: VoidFunction) => void;
-   // eslint-disable-next-line no-unused-vars
-   signInWithGoogle: (callback: VoidFunction) => void;
-   // eslint-disable-next-line no-unused-vars
+   dispatch: React.Dispatch<Action>;
+   signIn: (payload: User, callback?: VoidFunction) => void;
    signOut: (callback: VoidFunction) => void;
-   // eslint-disable-next-line no-unused-vars
-   userRole: (callback: VoidFunction, member?: string) => void;
 }
 
-type TAuth = {
-   currentUser: IAuthState['currentUser'];
-   role: IAuthState['role'];
-};
-
-const AuthContext = React.createContext({} as TAuth);
-
+const AuthContext = React.createContext({} as IAuthState);
 const AuthActionContext = React.createContext({} as AuthContextType);
 
 const AuthProvider: React.FC<React.PropsWithChildren> = props => {
-   const [state, dispatch] = React.useReducer(authReducer, initialState);
-   // const [isLoading, setIsLoading] = React.useState(true);
+   const [state, dispatch] = React.useReducer(
+      authReducer,
+      initialState,
+      initial => {
+         if (typeof localStorage === 'undefined') return initial;
 
-   // function handleError(error: any) {
-   //    console.error(error);
-   //    setIsLoading(false);
-   // }
+         return JSON.parse(localStorage.getItem('auth') as string) || initial;
+      }
+   );
 
-   const user = {
-      displayName: 'Some Body',
-      phoneNumber: '01300000',
-   };
+   useEffect(() => {
+      localStorage.setItem('auth', JSON.stringify(state));
+   }, [state]);
 
-   function signInWithEmail(callback: VoidFunction) {
+   function signIn(payload: User, cb: VoidFunction | undefined) {
       dispatch({
          type: 'setUser',
-         payload: user,
+         payload,
       });
-      callback();
+
+      cb && cb();
    }
 
-   function signInWithGoogle(callback: VoidFunction) {
-      dispatch({
-         type: 'setUser',
-         payload: user,
-      });
-      callback();
-   }
-
-   function signOut(callback: VoidFunction) {
+   function signOut(cb: VoidFunction) {
       dispatch({
          type: 'setUser',
          payload: null,
       });
-      callback();
-   }
-   function userRole(callback: VoidFunction, member?: string) {
-      {
-         member
-            ? dispatch({
-                 type: 'joinMess',
-                 payload: user,
-              })
-            : dispatch({
-                 type: 'createMess',
-                 payload: user,
-              });
-      }
 
-      callback();
+      // clear swr cache
+      mutate(() => true, undefined, {
+         revalidate: false,
+      });
+
+      cb();
    }
 
    const actions = {
-      signInWithEmail,
-      signInWithGoogle,
+      signIn,
       signOut,
-      userRole,
+      dispatch,
    };
 
    return (
       <AuthActionContext.Provider value={actions}>
-         {/* state might update more frequently than actions */}
          <AuthContext.Provider value={state}>
             {props.children}
          </AuthContext.Provider>

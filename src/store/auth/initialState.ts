@@ -1,16 +1,28 @@
-interface User {
-   displayName?: string;
-   phoneNumber?: string;
+import { Profile } from "types";
+
+export interface User {
+   id: string;
+   phone: string;
+   email: string;
+   name: string;
+   createdAt: Date;
+   role: keyof typeof Roles | null;
+   profile?: Profile
+}
+
+enum Roles {
+   Owner = 'owner',
+   Monitor = 'monitor',
+   Manager = 'manager',
+   Member = 'member',
 }
 
 export interface IAuthState {
-   currentUser: User | null;
-   role: 'owner' | 'manger' | 'member' | null;
+   currentUser: User;
 }
 
 const initialState = {
    currentUser: null,
-   role: null,
-} satisfies IAuthState;
+} as unknown as IAuthState;
 
 export default initialState;

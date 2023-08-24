@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AuthLayout from 'components/Layout/Auth';
 import MainLayout from 'components/Layout/Main';
 import OnBoardLayout from 'components/Layout/OnBoardLayout';
+import RequireAuth from 'components/RequireAuth';
 import Bazar from 'views/Bazar';
 import AddBazar from 'views/Bazar/AddBazar';
 import AllUserCost from 'views/Cost/AllUserCost';
@@ -25,7 +25,20 @@ import Register from 'views/Register';
 export default function AppRoutes() {
    return (
       <Routes>
-         <Route path='/app' element={<MainLayout />}>
+         <Route path='/' element={<AuthLayout />}>
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+            <Route path='forget-password' element={<ForgetPassword />} />
+         </Route>
+
+         <Route
+            path='/app'
+            element={
+               <RequireAuth>
+                  <MainLayout />
+               </RequireAuth>
+            }
+         >
             <Route index element={<Home />} />
             <Route path='specific-cost' element={<SpecificUserCost />} />
             <Route path='all-cost' element={<AllUserCost />} />
@@ -39,38 +52,18 @@ export default function AppRoutes() {
             <Route path='add-user' element={<AddUser />} />
          </Route>
 
-         <Route path='/onboard' element={<OnBoardLayout />}>
+         <Route
+            path='/onboard'
+            element={
+               <RequireAuth>
+                  <OnBoardLayout />
+               </RequireAuth>
+            }
+         >
             <Route index element={<OnBoard />} />
             <Route path='create' element={<CreateMess />} />
             <Route path='join' element={<JoinMess />} />
             <Route path=':hostel' element={<Hostel />} />
-         </Route>
-
-         <Route path='/' element={<AuthLayout />}>
-            <Route
-               path='login'
-               element={
-                  <Suspense fallback='...'>
-                     <Login />
-                  </Suspense>
-               }
-            />
-            <Route
-               path='register'
-               element={
-                  <Suspense fallback='...'>
-                     <Register />
-                  </Suspense>
-               }
-            />
-            <Route
-               path='forget-password'
-               element={
-                  <Suspense fallback='...'>
-                     <ForgetPassword />
-                  </Suspense>
-               }
-            />
          </Route>
       </Routes>
    );

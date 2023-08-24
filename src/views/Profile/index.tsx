@@ -1,7 +1,10 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Avatar, Card, CardContent, Stack, Typography } from '@mui/material';
+import fetcher from 'api/fetcher';
 import { RoutePaths } from 'enums/routes';
 import { useAuth, useAuthActions } from 'store/auth/Provider';
+import useSWRMutation from 'swr/mutation';
+import { useProfile } from './api';
 import GuestMeal from './components/GuestMeal';
 import LogoutButton from './components/LogoutButton';
 import MainMeal from './components/MainMeal';
@@ -11,13 +14,18 @@ const Profile: React.FC = () => {
    const { signOut } = useAuthActions();
    const navigate = useNavigate();
    const location = useLocation();
+   const { data: profile } = useProfile();
 
-   const permanentAddress = 'In a Galaxy, far far away!';
+   const { trigger } = useSWRMutation('/logout', url =>
+      fetcher(url, { method: 'POST' })
+   );
 
    function handleLogout() {
-      signOut(() => {
-         navigate(RoutePaths.Login, {
-            state: { from: location },
+      trigger().then(() => {
+         signOut(() => {
+            navigate(RoutePaths.Login, {
+               state: { from: location },
+            });
          });
       });
    }
@@ -28,18 +36,18 @@ const Profile: React.FC = () => {
             <CardContent>
                <Stack paddingY={1} alignItems='center' spacing={1}>
                   <Avatar sx={{ width: 100, height: 100 }}>
-                     {currentUser?.displayName?.charAt(0)}
+                     {currentUser.name?.charAt(0)}
                   </Avatar>
 
                   <Stack alignItems='center'>
                      <Typography fontWeight='medium' variant='h5'>
-                        {currentUser?.displayName}
+                        {currentUser.name}
                      </Typography>
                      <Typography variant='caption'>
-                        {permanentAddress}
+                        {profile?.address}
                      </Typography>
                      <Typography fontWeight='light' variant='subtitle2'>
-                        {currentUser?.phoneNumber}
+                        {currentUser.phone}
                      </Typography>
                   </Stack>
                </Stack>

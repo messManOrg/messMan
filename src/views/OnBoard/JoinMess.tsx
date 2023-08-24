@@ -39,14 +39,13 @@ function JoinMess() {
 
 function MessList() {
    const navigate = useNavigate();
-   const auth = useAuthActions();
+   const { dispatch } = useAuthActions();
    const location = useLocation();
    const from = location.state?.from?.pathname || '/app';
 
    function handelJoinMess() {
-      auth.userRole(() => {
-         navigate(from, { replace: true });
-      }, 'member');
+      dispatch({ type: 'joinMess' });
+      navigate(from, { replace: true });
    }
 
    return (

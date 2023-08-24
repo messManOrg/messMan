@@ -4,10 +4,7 @@ import Head from 'next/head';
 import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import createCache from '@emotion/cache';
 import { CacheProvider } from '@emotion/react';
-import AuthProvider from 'store/auth/Provider';
 import { getTheme } from 'theme';
-
-const serviceWorkerRegistration = () => import('serviceWorkerRegistration');
 
 export default function App({ Component, pageProps }: AppProps) {
    const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -31,10 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
          <CacheProvider value={cache}>
             <ThemeProvider theme={theme}>
                <CssBaseline />
-
-               <AuthProvider>
-                  <Component {...pageProps} />
-               </AuthProvider>
+               <Component {...pageProps} />
             </ThemeProvider>
          </CacheProvider>
       </main>
@@ -44,5 +38,5 @@ export default function App({ Component, pageProps }: AppProps) {
 const cache = createCache({ key: 'messman', prepend: true });
 
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
-   serviceWorkerRegistration();
+   // serviceWorkerRegistration();
 }

@@ -11,17 +11,13 @@ import {
    Stack,
 } from '@mui/material';
 import DialogWrapper from 'components/DialogWrapper';
-import { useAuthActions } from 'store/auth/Provider';
 
 function CreateMess() {
    const navigate = useNavigate();
-   const auth = useAuthActions();
    const location = useLocation();
    const from = location.state?.from?.pathname || '/app';
    function handelCreateMess() {
-      auth.userRole(() => {
-         navigate(from, { replace: true });
-      });
+      navigate(from, { replace: true });
    }
 
    return (

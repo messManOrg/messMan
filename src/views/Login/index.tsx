@@ -1,29 +1,46 @@
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Head from 'next/head';
-import { Button, Typography, Box, TextField } from '@mui/material';
+import {
+   Button,
+   Typography,
+   Box,
+   TextField,
+   CircularProgress,
+   Stack,
+} from '@mui/material';
+import Error from 'components/Error';
+import Link from 'components/Link';
 import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
 import { RoutePaths } from 'enums/routes';
 import { useAuthActions } from 'store/auth/Provider';
+import { useLogin } from './api';
 
 const Login: React.FC = () => {
    const navigate = useNavigate();
    const location = useLocation();
    const auth = useAuthActions();
+   const { trigger, error, isMutating } = useLogin();
 
    const from = location.state?.from?.pathname || '/onboard';
 
-   function handleLogin() {
-      auth.signInWithEmail(() => {
-         navigate(from, { replace: true });
+   async function handleLogin(e: React.ChangeEvent<HTMLFormElement>) {
+      e.preventDefault();
+
+      const formData = new FormData(e.target).entries();
+      const args = Object.fromEntries(formData);
+      const user = await trigger(args);
+
+      if (!user) return;
+
+      auth.signIn(user, () => {
+         navigate(from, {
+            replace: true,
+         });
       });
    }
 
-   function handleGoogleLogin() {
-      auth.signInWithGoogle(() => navigate(from, { replace: true }));
-   }
-
    return (
-      <>
+      <form onSubmit={handleLogin}>
          <Head>
             <title>Login</title>
          </Head>
@@ -32,62 +49,65 @@ const Login: React.FC = () => {
             Login
          </Typography>
 
-         <Box marginY={1.5}>
+         <Stack gap={1.5}>
             <TextField
                fullWidth
-               label='Email'
+               label='Phone/Email'
+               name='username'
                variant='outlined'
-               type='email'
+               type='text'
+               required
             />
-         </Box>
 
-         <Box marginY={1.5}>
             <TextField
                fullWidth
                label='Password'
+               name='password'
                variant='outlined'
                type='password'
+               required
             />
-         </Box>
 
-         <Box display='flex' justifyContent='space-between' marginY={1}>
-            <Typography marginY={1}>
-               {`Don't have an Account? `}
-               <Link
-                  style={{ textDecoration: 'none' }}
-                  to={RoutePaths.Register}
-               >
-                  Register here
-               </Link>
-            </Typography>
-
-            <Typography marginY={1}>
-               {' '}
-               <Link
-                  style={{ textDecoration: 'none' }}
-                  to={RoutePaths.ForgetPassword}
-               >
-                  Forget Password?
-               </Link>
-            </Typography>
-         </Box>
-
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            fullWidth
-            color='info'
-         >
-            Login
-         </Button>
+            <Button
+               fullWidth
+               size='large'
+               type='submit'
+               variant='contained'
+               color='info'
+               disabled={isMutating}
+               endIcon={
+                  isMutating ? <CircularProgress size='1rem' /> : undefined
+               }
+            >
+               Login
+            </Button>
+         </Stack>
 
          <Typography align='center' marginY={1}>
             or
          </Typography>
 
-         <GoogleLoginButton handleLogin={handleGoogleLogin} />
-         <FBLoginButton handleLogin={handleLogin} />
-      </>
+         <Stack gap={1.5}>
+            <GoogleLoginButton />
+            <FBLoginButton />
+         </Stack>
+
+         {error && (
+            <Box marginY={2}>
+               <Error error={error} />
+            </Box>
+         )}
+
+         <Box marginY={1.5}>
+            <Typography gutterBottom>
+               {`Don't have an Account? `}
+
+               <Link to={RoutePaths.Register}>Register here</Link>
+            </Typography>
+
+            <Link to={RoutePaths.ForgetPassword}>Forget Password?</Link>
+         </Box>
+      </form>
    );
 };
 

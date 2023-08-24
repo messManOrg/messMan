@@ -4,14 +4,8 @@ import { Box, Card, Container, styled } from '@mui/material';
 function AuthLayout() {
    return (
       <CardContainer>
-         <Container maxWidth='sm'>
-            <Card
-               sx={{
-                  py: '3rem',
-                  px: '1rem',
-                  m: '1rem',
-               }}
-            >
+         <Container sx={{ py: 2 }} maxWidth='sm'>
+            <Card sx={{ py: 4, px: 2, m: 2 }}>
                <Outlet />
             </Card>
          </Container>

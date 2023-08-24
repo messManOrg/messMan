@@ -10,7 +10,11 @@ module.exports = {
       complexity: 'warn',
       'max-params': 'warn',
       'require-await': 'error',
-      'no-unused-vars': 'error',
+      'no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'error',
+      '@typescript-eslint/no-unused-vars': [
+         'error',
+         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
    },
 };

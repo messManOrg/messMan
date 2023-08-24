@@ -1,82 +1,121 @@
-import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { Button, Typography, Box, TextField } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {
+   Button,
+   Typography,
+   Box,
+   TextField,
+   CircularProgress,
+   Stack,
+} from '@mui/material';
+import Error from 'components/Error';
+import Link from 'components/Link';
 import { FBLoginButton, GoogleLoginButton } from 'components/LoginButtons';
 import { RoutePaths } from 'enums/routes';
 import { useAuthActions } from 'store/auth/Provider';
+import { useRegister } from './api';
 
 const Register: React.FC = () => {
    const navigate = useNavigate();
    const location = useLocation();
    const auth = useAuthActions();
+   const { trigger, error, isMutating } = useRegister();
 
    const from = location.state?.from?.pathname || '/onboard';
 
-   function handleLogin() {
-      auth.signInWithEmail(() => {
-         navigate(from, { replace: true });
+   async function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
+      e.preventDefault();
+
+      const formData = new FormData(e.target).entries();
+      const args = Object.fromEntries(formData) as unknown;
+      const user = await trigger(args);
+
+      if (!user) return;
+
+      auth.signIn(user, () => {
+         navigate(from, {
+            replace: true,
+         });
       });
    }
 
    return (
-      <>
+      <form onSubmit={handleSubmit}>
          <Typography variant='h4' gutterBottom align='center'>
             Register
          </Typography>
 
-         <Box marginY={1.5}>
-            <TextField fullWidth label='Name' variant='outlined' type='text' />
-         </Box>
-
-         <Box marginY={1.5}>
+         <Stack gap={1.5}>
             <TextField
                fullWidth
-               label='Email'
+               label='Name'
+               name='name'
                variant='outlined'
-               type='email'
+               type='text'
+               required
             />
-         </Box>
 
-         <Box marginY={1.5}>
+            <TextField
+               fullWidth
+               label='Phone/Email'
+               name='username'
+               variant='outlined'
+               type='text'
+               required
+            />
+
             <TextField
                fullWidth
                label='Password'
+               name='password'
                variant='outlined'
                type='password'
+               required
             />
-         </Box>
 
-         <Box marginY={1.5}>
             <TextField
                fullWidth
                label='Retype Password'
+               name='re_password'
                variant='outlined'
                type='password'
+               required
             />
-         </Box>
 
-         <Typography marginY={1}>
-            Already have an Account?{' '}
-            <Link style={{ textDecoration: 'none' }} to={RoutePaths.Login}>
-               Login here
-            </Link>
-         </Typography>
-
-         <Button
-            onClick={handleLogin}
-            variant='contained'
-            fullWidth
-            color='info'
-         >
-            Register
-         </Button>
+            <Button
+               fullWidth
+               size='large'
+               type='submit'
+               variant='contained'
+               color='info'
+               disabled={isMutating}
+               endIcon={
+                  isMutating ? <CircularProgress size='1rem' /> : undefined
+               }
+            >
+               Register
+            </Button>
+         </Stack>
 
          <Typography align='center' marginX={1}>
             or
          </Typography>
 
-         <GoogleLoginButton handleLogin={handleLogin} />
-         <FBLoginButton handleLogin={handleLogin} />
-      </>
+         <Stack gap={1.5}>
+            <GoogleLoginButton />
+            <FBLoginButton />
+         </Stack>
+
+         {error && (
+            <Box marginY={2}>
+               <Error error={error} />
+            </Box>
+         )}
+
+         <Typography marginY={1.5}>
+            Already have an Account?{' '}
+            <Link to={RoutePaths.Login}>Login here</Link>
+         </Typography>
+      </form>
    );
 };
 
