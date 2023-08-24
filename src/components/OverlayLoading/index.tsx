@@ -1,6 +1,6 @@
 import { Backdrop, CircularProgress } from '@mui/material';
 
-const OverlayLoading = () => {
+export default function OverlayLoading() {
    return (
       <Backdrop
          open
@@ -9,6 +9,4 @@ const OverlayLoading = () => {
          <CircularProgress color='inherit' />
       </Backdrop>
    );
-};
-
-export default OverlayLoading;
+}

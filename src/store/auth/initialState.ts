@@ -1,4 +1,5 @@
-import { Profile } from "types";
+import { UserRole } from 'enums';
+import { Profile } from 'types';
 
 export interface User {
    id: string;
@@ -6,15 +7,8 @@ export interface User {
    email: string;
    name: string;
    createdAt: Date;
-   role: keyof typeof Roles | null;
-   profile?: Profile
-}
-
-enum Roles {
-   Owner = 'owner',
-   Monitor = 'monitor',
-   Manager = 'manager',
-   Member = 'member',
+   role: keyof typeof UserRole | null;
+   profile?: Profile;
 }
 
 export interface IAuthState {

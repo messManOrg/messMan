@@ -3,6 +3,7 @@ import AuthLayout from 'components/Layout/Auth';
 import MainLayout from 'components/Layout/Main';
 import OnBoardLayout from 'components/Layout/OnBoardLayout';
 import RequireAuth from 'components/RequireAuth';
+import { RoutePaths } from 'enums/routes';
 import Bazar from 'views/Bazar';
 import AddBazar from 'views/Bazar/AddBazar';
 import AllUserCost from 'views/Cost/AllUserCost';
@@ -25,31 +26,13 @@ import Register from 'views/Register';
 export default function AppRoutes() {
    return (
       <Routes>
-         <Route path='/' element={<AuthLayout />}>
-            <Route path='login' element={<Login />} />
-            <Route path='register' element={<Register />} />
-            <Route path='forget-password' element={<ForgetPassword />} />
-         </Route>
-
-         <Route
-            path='/app'
-            element={
-               <RequireAuth>
-                  <MainLayout />
-               </RequireAuth>
-            }
-         >
-            <Route index element={<Home />} />
-            <Route path='specific-cost' element={<SpecificUserCost />} />
-            <Route path='all-cost' element={<AllUserCost />} />
-            <Route path='bazar' element={<Bazar />} />
-            <Route path='add-bazar-list' element={<AddBazar />} />
-            <Route path='meals' element={<Meals />} />
-            <Route path='notices' element={<Notices />} />
-            <Route path='add-notice' element={<AddNotice />} />
-            <Route path='profile' element={<Profile />} />
-            <Route path='members' element={<Members />} />
-            <Route path='add-user' element={<AddUser />} />
+         <Route element={<AuthLayout />}>
+            <Route path={RoutePaths.Login} element={<Login />} />
+            <Route path={RoutePaths.Register} element={<Register />} />
+            <Route
+               path={RoutePaths.ForgetPassword}
+               element={<ForgetPassword />}
+            />
          </Route>
 
          <Route
@@ -64,6 +47,27 @@ export default function AppRoutes() {
             <Route path='create' element={<CreateMess />} />
             <Route path='join' element={<JoinMess />} />
             <Route path=':hostel' element={<Hostel />} />
+         </Route>
+
+         <Route
+            path={RoutePaths.Home}
+            element={
+               <RequireAuth>
+                  <MainLayout />
+               </RequireAuth>
+            }
+         >
+            <Route index element={<Home />} />
+            <Route path='specific-cost' element={<SpecificUserCost />} />
+            <Route path='all-cost' element={<AllUserCost />} />
+            <Route path={RoutePaths.Bazar} element={<Bazar />} />
+            <Route path='add-bazar-list' element={<AddBazar />} />
+            <Route path={RoutePaths.Meals} element={<Meals />} />
+            <Route path={RoutePaths.Notices} element={<Notices />} />
+            <Route path='add-notice' element={<AddNotice />} />
+            <Route path='profile' element={<Profile />} />
+            <Route path='members' element={<Members />} />
+            <Route path='add-user' element={<AddUser />} />
          </Route>
       </Routes>
    );

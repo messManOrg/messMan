@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import fetcher from 'api/fetcher';
 import Error from 'components/Error';
+import OverlayLoading from 'components/OverlayLoading';
 import RootProvider from 'store/RootProvider';
 
 const ErrorBoundary = dynamic(
@@ -22,7 +23,10 @@ const StaticRouter = dynamic(
 );
 
 // lazy loading is used to avoid the hidration mismatch between client & server
-const AppRoutes = dynamic(() => import('./AppRoutes'), { ssr: false });
+const AppRoutes = dynamic(() => import('./AppRoutes'), {
+   ssr: false,
+   loading: OverlayLoading,
+});
 
 function App() {
    const { asPath } = useRouter();
